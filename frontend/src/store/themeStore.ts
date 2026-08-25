@@ -3,9 +3,20 @@ import { persist } from 'zustand/middleware';
 
 export type Theme = 'light' | 'dark';
 
+const THEME_KEY = 'tasty-fingers-theme';
+const LEGACY_THEME_KEY = 'jbluxe-theme';
+
 export function readPersistedTheme(): Theme {
   try {
-    const raw = localStorage.getItem('jbluxe-theme');
+    let raw = localStorage.getItem(THEME_KEY);
+    if (!raw) {
+      const legacy = localStorage.getItem(LEGACY_THEME_KEY);
+      if (legacy) {
+        localStorage.setItem(THEME_KEY, legacy);
+        localStorage.removeItem(LEGACY_THEME_KEY);
+        raw = legacy;
+      }
+    }
     if (!raw) return 'light';
     if (raw === 'dark' || raw === 'light') return raw;
     const parsed = JSON.parse(raw) as { state?: { theme?: Theme } };
@@ -57,7 +68,7 @@ export const useThemeStore = create<ThemeState>()(
       },
     }),
     {
-      name: 'jbluxe-theme',
+      name: THEME_KEY,
       onRehydrateStorage: () => (state) => {
         if (state) applyTheme(state.theme);
       },

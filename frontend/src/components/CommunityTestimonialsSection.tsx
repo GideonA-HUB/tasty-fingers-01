@@ -19,9 +19,9 @@ const FALLBACK_TESTIMONIALS: Testimonial[] = [
   {
     id: 1,
     name: 'Sarah Johnson',
-    role: 'Fashion Blogger',
+    role: 'Food Blogger',
     content:
-      'JBLuxe Accessories has completely elevated my style. The quality of their jewellery and bags is unmatched — I\'ve never received so many compliments!',
+      'Tasty Fingers has completely elevated my meal times. The quality of their jollof and soups is unmatched — I\'ve never received so many compliments!',
     rating: 5,
     image: FALLBACK_AVATARS[0],
   },
@@ -30,16 +30,16 @@ const FALLBACK_TESTIMONIALS: Testimonial[] = [
     name: 'Amaka Okafor',
     role: 'Business Owner',
     content:
-      'The customer service is exceptional. They helped me find the perfect watch and bag set for my anniversary and I couldn\'t be happier.',
+      'The customer service is exceptional. They helped me place a catering order for my anniversary and I couldn\'t be happier.',
     rating: 5,
     image: FALLBACK_AVATARS[1],
   },
   {
     id: 3,
     name: 'Chioma Eze',
-    role: 'Stylist',
+    role: 'Event Planner',
     content:
-      'I recommend JBLuxe Accessories to all my clients. The pieces are premium quality and last so long. Worth every naira!',
+      'I recommend Tasty Fingers to all my clients. The meals are premium quality and always arrive fresh. Worth every naira!',
     rating: 5,
     image: FALLBACK_AVATARS[2],
   },
@@ -48,7 +48,7 @@ const FALLBACK_TESTIMONIALS: Testimonial[] = [
     name: 'Ngozi Adewale',
     role: 'Influencer',
     content:
-      'The variety is amazing. From earrings and necklaces to sunglasses and sneakers, they have everything you need for any occasion.',
+      'The variety is amazing. From jollof and soups to grills and sides, they have everything you need for any occasion.',
     rating: 5,
     image: FALLBACK_AVATARS[3],
   },
@@ -57,7 +57,7 @@ const FALLBACK_TESTIMONIALS: Testimonial[] = [
     name: 'Tunde Bakare',
     role: 'Photographer',
     content:
-      'I\'ve worked with many accessory brands, but JBLuxe Accessories stands out for their attention to detail and premium quality products.',
+      'I\'ve ordered from many restaurants, but Tasty Fingers stands out for their attention to flavour and consistently delicious meals.',
     rating: 5,
     image: FALLBACK_AVATARS[4],
   },
@@ -66,7 +66,7 @@ const FALLBACK_TESTIMONIALS: Testimonial[] = [
     name: 'Folake Adeyemi',
     role: 'Creative Director',
     content:
-      'Their designer bags and perfume selection are outstanding. My clients love how polished everything looks. JBLuxe is my go-to store.',
+      'Their grilled specialties and soup selection are outstanding. My team loves every order. Tasty Fingers is my go-to restaurant.',
     rating: 5,
     image: FALLBACK_AVATARS[5],
   },
@@ -130,7 +130,7 @@ export default function CommunityTestimonialsSection() {
       title: settings?.testimonials_title || 'What Our Clients Say',
       subtitle:
         settings?.testimonials_subtitle ||
-        'Real stories from real customers who have experienced the JBLuxe Accessories difference',
+        'Real stories from real customers who have experienced the Tasty Fingers difference',
       rows: buildRows(testimonials),
     }),
     [settings?.testimonials_title, settings?.testimonials_subtitle, testimonials],

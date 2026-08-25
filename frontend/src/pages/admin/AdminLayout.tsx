@@ -27,7 +27,7 @@ const navItems = [
   { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, path: '/dashboard' },
   { id: 'orders', label: 'Orders', icon: ShoppingCart, path: '/dashboard/orders' },
   { id: 'legal-agreements', label: 'Legal Agreements', icon: ShieldCheck, path: '/dashboard/legal-agreements' },
-  { id: 'products', label: 'Products', icon: Package, path: '/dashboard/products' },
+  { id: 'products', label: 'Meals', icon: Package, path: '/dashboard/products' },
   { id: 'categories', label: 'Categories', icon: FolderOpen, path: '/dashboard/categories' },
   { id: 'reviews', label: 'Reviews', icon: Star, path: '/dashboard/reviews' },
   { id: 'notifications', label: 'Notifications', icon: Bell, path: '/dashboard/notifications' },
@@ -87,10 +87,10 @@ export default function AdminLayout() {
       <div className="border-b border-white/10 p-6">
         <div className="flex items-center gap-3">
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-pink text-sm font-bold text-white shadow-lg shadow-brand-pink/40">
-            JB
+            TF
           </div>
           <div>
-            <h1 className="font-display text-lg font-bold text-white">JBLuxe Accessories</h1>
+            <h1 className="font-display text-lg font-bold text-white">Tasty Fingers</h1>
             <p className="text-xs text-white/50">Owner Dashboard</p>
           </div>
         </div>

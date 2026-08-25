@@ -114,13 +114,13 @@ export default function ProductReviews({
 
           <div className="relative text-center">
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-white/90 mb-3">
-              Voices of Luxury
+              Guest Reviews
             </p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-semibold text-white mb-4">
               Customer Reviews
             </h2>
             <p className="text-white/85 max-w-xl mx-auto text-sm md:text-base leading-relaxed">
-              Real experiences from our community — share yours and help others discover their perfect look.
+              Real experiences from our guests — share yours and help others discover their next favourite meal.
             </p>
           </div>
         </motion.div>

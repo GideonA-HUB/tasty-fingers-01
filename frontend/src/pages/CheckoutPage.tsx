@@ -171,7 +171,7 @@ export default function CheckoutPage() {
 
   return (
     <>
-      <SEO title="Checkout" description="Complete your luxury accessories order" />
+      <SEO title="Checkout" description="Complete your Tasty Fingers meal order" />
 
       <div className="section-padding max-w-6xl mx-auto">
         <div className="mb-6 md:mb-8">

@@ -1,6 +1,6 @@
-# JBLuxe Accessories
+# Tasty Fingers
 
-Luxury Fashion Accessories E-Commerce Platform — premium jewellery, bags, watches, shoes, sunglasses, perfumes and lifestyle accessories with Django REST API and React frontend.
+Premium Restaurant & Food Ordering Platform — Nigerian and continental meals with Django REST API and React frontend. Order jollof rice, soups, peppered meats, seafood, snacks, drinks, and combo meals for delivery, takeaway, or pickup.
 
 ## Tech Stack
 
@@ -91,12 +91,12 @@ Quick summary:
 
 Single service serves both API and React frontend on one domain.
 
-**Production:** [https://www.jbluxeaccessories.com](https://www.jbluxeaccessories.com) · [Railway](https://jbluxeaccessories-project-production.up.railway.app)
+**Production:** [Railway](https://tasty-fingers-01-production.up.railway.app/) · Future domains: [tastyfingers.com](https://tastyfingers.com) / [www.tastyfingers.com](https://www.tastyfingers.com)
 
 ## Project Structure
 
 ```
-jbluxeaccessories/
+tasty-fingers-01/
 ├── backend/          # Django API
 ├── frontend/         # React SPA
 ├── scripts/          # Entrypoint scripts

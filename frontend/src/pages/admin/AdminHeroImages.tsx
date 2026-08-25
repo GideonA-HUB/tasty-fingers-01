@@ -48,8 +48,8 @@ export default function AdminHeroImages() {
     const formData = new FormData();
     formData.append('image', selectedFile);
     formData.append('alt_text', uploadTitle || 'Hero image');
-    formData.append('title', uploadTitle || 'Luxury Collection');
-    formData.append('category', uploadCategory || 'COLLECTION');
+    formData.append('title', uploadTitle || 'Featured Meal');
+    formData.append('category', uploadCategory || 'MENU');
     formData.append('link_url', uploadLink || '/shop');
 
     await fetch('/api/v1/site/admin/hero-images/', {
@@ -145,7 +145,7 @@ export default function AdminHeroImages() {
               type="text"
               value={uploadTitle}
               onChange={(e) => setUploadTitle(e.target.value)}
-              placeholder="e.g. Designer Luxury Bags"
+              placeholder="e.g. Party Jollof Special"
               className="w-full px-4 py-3 rounded-xl border border-brand-gray-200 focus:border-brand-pink outline-none"
             />
           </div>
@@ -155,7 +155,7 @@ export default function AdminHeroImages() {
               type="text"
               value={uploadCategory}
               onChange={(e) => setUploadCategory(e.target.value)}
-              placeholder="e.g. BAGS"
+              placeholder="e.g. JOLLOF"
               className="w-full px-4 py-3 rounded-xl border border-brand-gray-200 focus:border-brand-pink outline-none"
             />
           </div>

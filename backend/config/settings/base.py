@@ -160,8 +160,8 @@ SIMPLE_JWT = {
 }
 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'JBLuxe Accessories API',
-    'DESCRIPTION': 'Luxury Fashion Accessories E-Commerce Platform API',
+    'TITLE': 'Tasty Fingers API',
+    'DESCRIPTION': 'Premium Restaurant & Food Ordering Platform API',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
 }
@@ -175,7 +175,7 @@ CORS_ALLOWED_ORIGINS = config(
 CORS_ALLOW_CREDENTIALS = True
 
 # Site Settings
-SITE_NAME = config('SITE_NAME', default='JBLuxe Accessories')
+SITE_NAME = config('SITE_NAME', default='Tasty Fingers')
 SITE_URL = config('SITE_URL', default='http://localhost:8000')
 FRONTEND_URL = config('FRONTEND_URL', default='http://localhost:5173')
 DELIVERY_FEE = config('DELIVERY_FEE', default=4000, cast=int)
@@ -192,15 +192,15 @@ FLUTTERWAVE_ENCRYPTION_KEY = config('FLUTTERWAVE_ENCRYPTION_KEY', default='')
 RESEND_API_KEY = config('RESEND_API_KEY', default='')
 DEFAULT_FROM_EMAIL = config(
     'DEFAULT_FROM_EMAIL',
-    default='JBLuxe Accessories <orders@jbluxeaccessories.com>',
+    default='Tasty Fingers <orders@tastyfingers.com>',
 )
-ADMIN_EMAIL = config('ADMIN_EMAIL', default='contact@jbluxeaccessories.com')
+ADMIN_EMAIL = config('ADMIN_EMAIL', default='contact@tastyfingers.com')
 EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
 
 # Admin Dashboard Credentials
 ADMIN_USERNAME = config('ADMIN_USERNAME', default='admin')
 ADMIN_PASSWORD = config('ADMIN_PASSWORD', default='admin123')
-ADMIN_USER_EMAIL = config('ADMIN_USER_EMAIL', default='admin@jbluxeaccessories.com')
+ADMIN_USER_EMAIL = config('ADMIN_USER_EMAIL', default='admin@tastyfingers.com')
 
 # Security
 SECURE_BROWSER_XSS_FILTER = True

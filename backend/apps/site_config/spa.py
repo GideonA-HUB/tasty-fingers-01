@@ -79,12 +79,12 @@ def build_product_og_tags(request, slug: str) -> str:
         return ''
 
     title = product.meta_title or product.name
-    full_title = f'{title} | JBLuxe Accessories'
+    full_title = f'{title} | Tasty Fingers'
     description = _truncate(
         product.meta_description
         or product.short_description
         or product.description
-        or 'Premium luxury fashion accessories from JBLuxe Accessories.',
+        or 'Freshly prepared meals from Tasty Fingers — order online for delivery or pickup.',
     )
     page_url = _absolute_url(request, f'/product/{product.slug}')
 
@@ -111,7 +111,7 @@ def build_product_og_tags(request, slug: str) -> str:
         f'<meta property="og:url" content="{esc(page_url)}" />',
         f'<meta property="og:image" content="{esc(image)}" />',
         f'<meta property="og:image:alt" content="{esc(product.name)}" />',
-        '<meta property="og:site_name" content="JBLuxe Accessories" />',
+        '<meta property="og:site_name" content="Tasty Fingers" />',
         '<meta name="twitter:card" content="summary_large_image" />',
         f'<meta name="twitter:title" content="{esc(full_title)}" />',
         f'<meta name="twitter:description" content="{esc(description)}" />',

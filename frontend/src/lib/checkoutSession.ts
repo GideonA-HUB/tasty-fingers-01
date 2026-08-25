@@ -1,5 +1,5 @@
-const DRAFT_KEY = 'jbluxe-checkout-draft';
-const PENDING_ORDER_KEY = 'jbluxe-pending-order';
+const DRAFT_KEY = 'tasty-fingers-checkout-draft';
+const PENDING_ORDER_KEY = 'tasty-fingers-pending-order';
 
 export function saveCheckoutDraft<T extends object>(data: T) {
   try {

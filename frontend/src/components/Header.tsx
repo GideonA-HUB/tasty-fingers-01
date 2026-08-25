@@ -112,7 +112,7 @@ export default function Header({ whatsappNumber }: HeaderProps) {
                   type="search"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search accessories..."
+                  placeholder="Search meals..."
                   className="w-full px-4 py-3 rounded-xl border border-brand-gray-200 bg-white text-brand-accent placeholder:text-brand-accent/45 text-sm outline-none focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/25"
                   autoFocus
                   autoComplete="off"

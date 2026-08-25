@@ -12,12 +12,12 @@ export default function AboutPage() {
 
   if (isLoading) return <LoadingSpinner fullScreen={false} />;
 
-  const title = settings?.about_title || 'About JBLuxe Accessories';
-  const subtitle = settings?.about_subtitle || settings?.tagline || 'Luxury Accessories, Delivered with Care';
+  const title = settings?.about_title || 'About Tasty Fingers';
+  const subtitle = settings?.about_subtitle || settings?.tagline || 'Delicious Meals, Delivered with Care';
 
   return (
     <>
-      <SEO title="About Us" description="Discover the JBLuxe Accessories story — luxury fashion accessories redefined" />
+      <SEO title="About Us" description="Discover the Tasty Fingers story — authentic Nigerian meals, delivered fresh" />
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-to-br from-brand-pink-dark via-brand-pink to-brand-pink-dark">
@@ -95,7 +95,7 @@ export default function AboutPage() {
               {settings?.brand_story ? (
                 <div>
                   <h3 className="text-lg font-display font-semibold text-brand-black mb-3">
-                    The JBLuxe Accessories Story
+                    The Tasty Fingers Story
                   </h3>
                   <p className="text-sm md:text-base text-brand-accent/70 leading-relaxed whitespace-pre-line">
                     {settings.brand_story}
@@ -103,9 +103,9 @@ export default function AboutPage() {
                 </div>
               ) : (
                 <p className="text-sm text-brand-accent/60 leading-relaxed">
-                  JBLuxe Accessories is a premium luxury fashion brand specializing in jewellery, bags,
-                  watches, shoes, sunglasses, perfumes, and accessories for women and men — curated for
-                  the discerning customer who demands excellence.
+                  Tasty Fingers is a premium restaurant specializing in authentic Nigerian meals —
+                  jollof, soups, rice dishes, grilled specialties, and more — prepared fresh for
+                  delivery and pickup by food lovers who demand excellence.
                 </p>
               )}
             </div>
@@ -167,10 +167,10 @@ export default function AboutPage() {
           className="mt-10 md:mt-14 grid grid-cols-2 md:grid-cols-4 gap-4"
         >
           {[
-            { label: 'Authentic', desc: 'Genuine luxury pieces' },
-            { label: 'Global', desc: 'Curated worldwide' },
-            { label: 'Premium', desc: 'Finest craftsmanship' },
-            { label: 'Trusted', desc: 'Delivered with care' },
+            { label: 'Authentic', desc: 'Homestyle Nigerian meals' },
+            { label: 'Fresh', desc: 'Made to order daily' },
+            { label: 'Premium', desc: 'Quality ingredients' },
+            { label: 'Trusted', desc: 'Delivery & pickup' },
           ].map((item) => (
             <div
               key={item.label}

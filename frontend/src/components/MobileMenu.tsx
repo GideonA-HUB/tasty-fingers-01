@@ -12,7 +12,7 @@ interface MobileMenuProps {
 
 const menuLinks = [
   { to: '/', label: 'Home' },
-  { to: '/shop', label: 'Shop All' },
+  { to: '/shop', label: 'View Menu' },
   { to: '/categories', label: 'Categories' },
   { to: '/shop?filter=flash-sales', label: 'Flash Sales' },
   { to: '/shop?filter=new-arrivals', label: 'New Arrivals' },
@@ -87,7 +87,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 <ThemeToggle />
               </div>
               <p className="text-xs text-brand-accent/40 dark:text-gray-500 text-center">
-                Luxury Accessories, Delivered with Care
+                Delicious Meals, Delivered with Care
               </p>
             </div>
           </motion.nav>

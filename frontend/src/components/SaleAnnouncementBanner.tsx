@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { siteApi } from '@/api';
 
 const DEFAULT_MARQUEE =
-  'JBLuxe Accessories presents Mid Year Preorder Sales — bringing factory prices to your doorstep with 30% off website orders, 20% off WhatsApp orders, and free gift wrap. Running July 20th – 25th, 2026. Please read our Terms of Service before ordering. · ';
+  'Tasty Fingers presents Mid Year Preorder Sales — bringing special meal deals to your doorstep with 30% off website orders, 20% off WhatsApp orders, and free extras. Running July 20th – 25th, 2026. Please read our Terms of Service before ordering. · ';
 
 function formatDateRange(start?: string | null, end?: string | null) {
   if (!start && !end) return 'July 20th – 25th, 2026';
@@ -113,14 +113,14 @@ export default function SaleAnnouncementBanner() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-brand-black shadow-lg transition hover:bg-brand-gray-100"
                 >
-                  {announcement.cta_label || 'Shop Now'}
+                  {announcement.cta_label || 'Order Now'}
                 </a>
               ) : (
                 <Link
                   to={ctaPath}
                   className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-brand-black shadow-lg transition hover:bg-brand-gray-100"
                 >
-                  {announcement.cta_label || 'Shop Now'}
+                  {announcement.cta_label || 'Order Now'}
                 </Link>
               )}
               <Link

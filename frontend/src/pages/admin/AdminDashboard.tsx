@@ -65,7 +65,7 @@ export default function AdminDashboard() {
         <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/10 blur-2xl" />
         <div className="absolute -bottom-8 left-1/3 h-32 w-32 rounded-full bg-white/5 blur-xl" />
         <div className="relative">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">Luxury Fashion Accessories</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">Premium Restaurant & Food Ordering</p>
           <h1 className="mt-2 font-display text-3xl font-bold md:text-4xl">Dashboard Overview</h1>
           <p className="mt-2 max-w-xl text-white/80">
             Welcome back. Here is a live snapshot of your store performance, orders, and subscribers.
@@ -77,7 +77,7 @@ export default function AdminDashboard() {
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <MetricCard title="Total Orders" value={metrics?.total_orders || 0} accent="pink" />
         <MetricCard title="Total Revenue" value={formatNaira(metrics?.total_revenue || 0)} accent="green" />
-        <MetricCard title="Active Products" value={metrics?.active_products || 0} accent="blue" />
+        <MetricCard title="Active Meals" value={metrics?.active_products || 0} accent="blue" />
         <MetricCard
           title="Newsletter Subscribers"
           value={metrics?.newsletter_subscribers || 0}

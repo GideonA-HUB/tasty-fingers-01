@@ -18,37 +18,37 @@ interface HeroImageApi {
 const FALLBACK_CARDS = [
   {
     image:
-      'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&h=1000&fit=crop&auto=format&q=80',
-    category: 'JEWELLERY',
-    title: 'Statement Earrings & Necklaces',
+      'https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=800&h=1000&fit=crop&auto=format&q=80',
+    category: 'JOLLOF',
+    title: 'Party Jollof & Rice Specials',
     link_url: '/shop',
   },
   {
     image:
-      'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&h=1000&fit=crop&auto=format&q=80',
-    category: 'BAGS',
-    title: 'Designer & Luxury Bags',
+      'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800&h=1000&fit=crop&auto=format&q=80',
+    category: 'SOUPS',
+    title: 'Egusi, Okra & Native Soups',
     link_url: '/shop',
   },
   {
     image:
-      'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&h=1000&fit=crop&auto=format&q=80',
-    category: 'WATCHES',
-    title: 'Timeless Luxury Watches',
+      'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&h=1000&fit=crop&auto=format&q=80',
+    category: 'GRILLS',
+    title: 'Suya, Chicken & BBQ',
     link_url: '/shop',
   },
   {
     image:
-      'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800&h=1000&fit=crop&auto=format&q=80',
-    category: 'SHOES',
-    title: 'Heels, Sneakers & Sandals',
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&h=1000&fit=crop&auto=format&q=80',
+    category: 'SIDES',
+    title: 'Plantain, Fries & Extras',
     link_url: '/shop',
   },
   {
     image:
-      'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=800&h=1000&fit=crop&auto=format&q=80',
-    category: 'SUNGLASSES',
-    title: 'Iconic Eyewear',
+      'https://images.unsplash.com/photo-1544145945-f904253e6167?w=800&h=1000&fit=crop&auto=format&q=80',
+    category: 'DRINKS',
+    title: 'Fresh Juices & Soft Drinks',
     link_url: '/shop',
   },
 ];
@@ -96,28 +96,28 @@ export default function HomeHero() {
 
   const title =
     settings?.hero_title?.trim() ||
-    'Discover Your Perfect Style';
+    'Order Your Favourite Meals';
   const subtitle =
     settings?.hero_subtitle?.trim() ||
     settings?.meta_description?.trim() ||
-    'Explore our premium collection of jewellery, bags, watches, shoes, sunglasses, and fashion accessories. Curated for women and men who demand excellence.';
+    'Explore our menu of jollof, soups, grilled specialties, sides, and drinks. Fresh meals for delivery or pickup.';
   const eyebrow =
     settings?.hero_eyebrow?.trim() ||
     settings?.tagline?.trim() ||
     settings?.site_name ||
-    'Luxury Fashion Accessories';
+    'Premium Restaurant & Food Ordering';
 
-  const primaryLabel = settings?.hero_primary_cta_label?.trim() || 'Shop Now';
+  const primaryLabel = settings?.hero_primary_cta_label?.trim() || 'Order Now';
   const primaryUrl = resolvePath(settings?.hero_primary_cta_url, '/shop');
-  const secondaryLabel = settings?.hero_secondary_cta_label?.trim() || 'Browse Categories';
+  const secondaryLabel = settings?.hero_secondary_cta_label?.trim() || 'Browse Menu';
   const secondaryUrl = resolvePath(settings?.hero_secondary_cta_url, '/categories');
 
   const cards =
     heroImages.length > 0
       ? heroImages.map((img) => ({
           image: img.image,
-          category: img.category?.trim() || 'COLLECTION',
-          title: img.title?.trim() || img.alt_text?.trim() || 'Luxury Collection',
+          category: img.category?.trim() || 'MENU',
+          title: img.title?.trim() || img.alt_text?.trim() || 'Featured Meal',
           onClick: () => go(resolvePath(img.link_url, '/shop')),
         }))
       : FALLBACK_CARDS.map((card) => ({
@@ -128,7 +128,7 @@ export default function HomeHero() {
   return (
     <PulseFitHero
       showHeader={false}
-      logo={settings?.site_name || 'JBLuxe Accessories'}
+      logo={settings?.site_name || 'Tasty Fingers'}
       eyebrow={eyebrow}
       title={title}
       subtitle={subtitle}
@@ -142,13 +142,13 @@ export default function HomeHero() {
       }}
       disclaimer={
         settings?.hero_disclaimer?.trim() ||
-        'Nationwide delivery · Secure checkout · Luxury quality guaranteed'
+        'Nationwide delivery · Secure checkout · Fresh meals guaranteed'
       }
       socialProof={{
         avatars: FALLBACK_AVATARS,
         text:
           settings?.hero_social_proof_text?.trim() ||
-          'Trusted by style lovers across Nigeria',
+          'Trusted by food lovers across Nigeria',
       }}
       programs={cards}
     />

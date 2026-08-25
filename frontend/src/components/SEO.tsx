@@ -10,9 +10,9 @@ interface SEOProps {
   schema?: Record<string, unknown>;
 }
 
-const SITE_NAME = 'JBLuxe Accessories';
+const SITE_NAME = 'Tasty Fingers';
 const DEFAULT_DESCRIPTION =
-  'Premium jewellery, bags, watches, shoes, sunglasses, perfumes and fashion accessories for women and men. Luxury lifestyle products delivered with care.';
+  'Order delicious Nigerian and continental meals online from Tasty Fingers — jollof rice, soups, peppered meats, seafood, snacks, and drinks. Delivery, takeaway, and pickup.';
 
 export default function SEO({
   title,
@@ -23,11 +23,24 @@ export default function SEO({
   schema,
 }: SEOProps) {
   const { assets } = useSiteAssets();
-  const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} - Luxury Fashion Accessories`;
+  const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} - Premium Restaurant & Food Ordering`;
   const siteUrl = window.location.origin;
   const canonicalUrl = canonical || window.location.href;
   const resolvedImage = image || getBrandLogoUrl(assets);
   const imageUrl = resolvedImage.startsWith('http') ? resolvedImage : `${siteUrl}${resolvedImage}`;
+
+  const restaurantSchema = schema || {
+    '@context': 'https://schema.org',
+    '@type': 'Restaurant',
+    name: SITE_NAME,
+    description: DEFAULT_DESCRIPTION,
+    url: siteUrl,
+    image: imageUrl,
+    servesCuisine: ['Nigerian', 'African', 'Continental'],
+    priceRange: '₦₦',
+    acceptsReservations: false,
+    hasMenu: `${siteUrl}/shop`,
+  };
 
   return (
     <Helmet>
@@ -48,9 +61,7 @@ export default function SEO({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={imageUrl} />
 
-      {schema && (
-        <script type="application/ld+json">{JSON.stringify(schema)}</script>
-      )}
+      <script type="application/ld+json">{JSON.stringify(restaurantSchema)}</script>
     </Helmet>
   );
 }

@@ -11,7 +11,7 @@ interface FooterProps {
 }
 
 export default function Footer({
-  siteName = 'JBLuxe Accessories',
+  siteName = 'Tasty Fingers',
   instagramUrl,
   facebookUrl,
   twitterUrl,
@@ -40,8 +40,8 @@ export default function Footer({
       <div className="section-padding max-w-7xl mx-auto">
         {/* Newsletter */}
         <div className="text-center mb-10 pb-10 border-b border-white/10">
-          <h3 className="text-xl font-display font-semibold mb-2">Join Our Luxury Circle</h3>
-          <p className="text-white/60 text-sm mb-6">Exclusive access to new arrivals, promotions & launches</p>
+          <h3 className="text-xl font-display font-semibold mb-2">Join Our Food Circle</h3>
+          <p className="text-white/60 text-sm mb-6">Exclusive access to new menu items, promotions & offers</p>
           {subscribed ? (
             <p className="font-medium text-white">Thank you for subscribing!</p>
           ) : (
@@ -69,7 +69,7 @@ export default function Footer({
           <div>
             <BrandLogo variant="footer" alt={siteName} className="mb-4 h-8 w-auto" />
             <p className="text-white/50 text-sm leading-relaxed">
-              Premium jewellery, bags, watches, shoes and fashion accessories for women and men.
+              Authentic Nigerian meals for delivery and pickup — jollof, soups, grills, and more.
             </p>
           </div>
           <div>

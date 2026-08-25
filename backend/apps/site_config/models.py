@@ -27,11 +27,11 @@ class SiteAsset(models.Model):
 
 
 class SiteSettings(models.Model):
-    site_name = models.CharField(max_length=100, default='JBLuxe Accessories')
-    tagline = models.CharField(max_length=255, default='Luxury Fashion Accessories')
+    site_name = models.CharField(max_length=100, default='Tasty Fingers')
+    tagline = models.CharField(max_length=255, default='Premium Restaurant & Food Ordering')
     meta_description = models.TextField(blank=True)
     meta_keywords = models.TextField(blank=True)
-    contact_email = models.EmailField(default='contact@jbluxeaccessories.com')
+    contact_email = models.EmailField(default='contact@tastyfingers.com')
     contact_phone = models.CharField(max_length=20, blank=True)
     whatsapp_number = models.CharField(max_length=20, blank=True)
     address = models.TextField(blank=True)
@@ -44,7 +44,7 @@ class SiteSettings(models.Model):
     about_subtitle = models.CharField(
         max_length=255,
         blank=True,
-        default='Luxury Accessories, Delivered with Care',
+        default='Fresh Meals, Delivered with Care',
         help_text='Subtitle shown below the About page heading',
     )
     about_content = models.TextField(blank=True)
@@ -65,58 +65,58 @@ class SiteSettings(models.Model):
     vat_rate = models.DecimalField(max_digits=5, decimal_places=2, default=0)
     instagram_feed_enabled = models.BooleanField(default=False)
     instagram_access_token = models.CharField(max_length=500, blank=True)
-    why_choose_title = models.CharField(max_length=255, default='Why Choose JBLuxe Accessories')
+    why_choose_title = models.CharField(max_length=255, default='Why Choose Tasty Fingers')
     why_choose_subtitle = models.CharField(
         max_length=500,
         blank=True,
-        default='Authentic luxury accessories, crafted for elegance',
+        default='Fresh flavours, generous portions, delivered with care',
     )
     testimonials_title = models.CharField(
         max_length=255,
         blank=True,
-        default='What Our Clients Say',
+        default='What Our Guests Say',
         help_text='Homepage testimonials section title',
     )
     testimonials_subtitle = models.CharField(
         max_length=500,
         blank=True,
-        default='Real stories from real customers who have experienced the JBLuxe Accessories difference',
+        default='Real stories from real customers who have experienced the Tasty Fingers difference',
         help_text='Homepage testimonials section subtitle',
     )
     # Homepage hero (PulseFit-style) — editable in Django admin + owner dashboard
     hero_eyebrow = models.CharField(
         max_length=120,
         blank=True,
-        default='Luxury Fashion Accessories',
+        default='Premium Restaurant',
         help_text='Small label above the homepage hero title',
     )
     hero_title = models.CharField(
         max_length=200,
         blank=True,
-        default='Discover Your Perfect Style',
+        default='Order Your Favourite Meals',
         help_text='Main homepage hero headline',
     )
     hero_subtitle = models.TextField(
         blank=True,
         default=(
-            'Explore our premium collection of jewellery, bags, watches, shoes, sunglasses, '
-            'and fashion accessories. Curated for women and men who demand excellence.'
+            'Explore our menu of Nigerian classics and chef specials — rice dishes, soups, '
+            'peppered meats, seafood, snacks, and drinks. Freshly prepared for delivery or pickup.'
         ),
         help_text='Supporting text under the homepage hero title',
     )
-    hero_primary_cta_label = models.CharField(max_length=60, blank=True, default='Shop Now')
+    hero_primary_cta_label = models.CharField(max_length=60, blank=True, default='View Menu')
     hero_primary_cta_url = models.CharField(max_length=255, blank=True, default='/shop')
     hero_secondary_cta_label = models.CharField(max_length=60, blank=True, default='Browse Categories')
     hero_secondary_cta_url = models.CharField(max_length=255, blank=True, default='/categories')
     hero_disclaimer = models.CharField(
         max_length=200,
         blank=True,
-        default='Nationwide delivery · Secure checkout · Luxury quality guaranteed',
+        default='Delivery & pickup · Secure checkout · Freshly prepared meals',
     )
     hero_social_proof_text = models.CharField(
         max_length=120,
         blank=True,
-        default='Trusted by style lovers across Nigeria',
+        default='Trusted by food lovers across Nigeria',
     )
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -266,7 +266,7 @@ class HeroImage(models.Model):
         max_length=80,
         blank=True,
         default='COLLECTION',
-        help_text='Small label on the homepage hero carousel card (e.g. JEWELLERY, BAGS)',
+        help_text='Small label on the homepage hero carousel card (e.g. JOLLOF, SOUPS)',
     )
     title = models.CharField(
         max_length=160,
@@ -322,21 +322,21 @@ class AdminActivityLog(models.Model):
 class SaleAnnouncement(models.Model):
     """Homepage sale / preorder announcement — images and copy managed in Django admin."""
 
-    title = models.CharField(max_length=120, default='Mid Year Preorder Sales')
-    badge_text = models.CharField(max_length=80, blank=True, default='PREORDER SALE')
+    title = models.CharField(max_length=120, default='Weekend Meal Deals')
+    badge_text = models.CharField(max_length=80, blank=True, default='CHEF SPECIALS')
     headline = models.CharField(
         max_length=160,
         blank=True,
-        default='Bringing factory prices to your doorstep',
+        default='Fresh meals at special prices',
     )
-    offer_website = models.CharField(max_length=80, blank=True, default='30% OFF WEBSITE ORDERS')
-    offer_whatsapp = models.CharField(max_length=80, blank=True, default='20% OFF WHATSAPP ORDERS')
-    offer_extra = models.CharField(max_length=80, blank=True, default='FREE GIFT WRAP')
+    offer_website = models.CharField(max_length=80, blank=True, default='10% OFF WEBSITE ORDERS')
+    offer_whatsapp = models.CharField(max_length=80, blank=True, default='FREE DRINK ON COMBO MEALS')
+    offer_extra = models.CharField(max_length=80, blank=True, default='FAMILY PACK DEALS')
     marquee_text = models.TextField(
         default=(
-            'JBLuxe Accessories presents Mid Year Preorder Sales — bringing factory prices to your doorstep '
-            'with 30% off website orders, 20% off WhatsApp orders, and free gift wrap. '
-            'Running July 20th – 25th, 2026. Please read our Terms of Service before ordering.'
+            'Tasty Fingers presents Weekend Meal Deals — freshly prepared favourites at special prices '
+            'with 10% off website orders, free drink on combo meals, and family pack deals. '
+            'Please read our Terms of Service before ordering.'
         ),
         help_text='Continuous scrolling announcement text shown on the homepage banner.',
     )
@@ -352,10 +352,10 @@ class SaleAnnouncement(models.Model):
         null=True,
         help_text='Optional sale poster graphic (right side / mobile hero).',
     )
-    cta_label = models.CharField(max_length=60, blank=True, default='Shop Preorder Looks')
+    cta_label = models.CharField(max_length=60, blank=True, default='Order Specials')
     cta_url = models.CharField(max_length=255, blank=True, default='/shop')
-    start_date = models.DateField(null=True, blank=True, help_text='Sale start date (e.g. July 20, 2026)')
-    end_date = models.DateField(null=True, blank=True, help_text='Sale end date (e.g. July 25, 2026)')
+    start_date = models.DateField(null=True, blank=True, help_text='Promo start date')
+    end_date = models.DateField(null=True, blank=True, help_text='Promo end date')
     is_active = models.BooleanField(default=True)
     order = models.PositiveIntegerField(default=0, help_text='Lower numbers appear first when several are active.')
     created_at = models.DateTimeField(auto_now_add=True)

@@ -13,7 +13,7 @@ jobs:
       postgres:
         image: postgres:16
         env:
-          POSTGRES_DB: jbluxeaccessories_test
+          POSTGRES_DB: tasty_fingers_test
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
         ports:
@@ -38,7 +38,7 @@ jobs:
 
       - name: Run migrations
         env:
-          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/jbluxeaccessories_test
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/tasty_fingers_test
           SECRET_KEY: test-secret-key
           DEBUG: 'True'
         working-directory: backend
@@ -46,7 +46,7 @@ jobs:
 
       - name: Run tests
         env:
-          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/jbluxeaccessories_test
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/tasty_fingers_test
           SECRET_KEY: test-secret-key
           DEBUG: 'True'
         working-directory: backend

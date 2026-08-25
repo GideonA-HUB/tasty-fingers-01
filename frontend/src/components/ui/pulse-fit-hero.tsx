@@ -46,7 +46,7 @@ export interface PulseFitHeroProps {
 }
 
 export function PulseFitHero({
-  logo = 'JBLuxe Accessories',
+  logo = 'Tasty Fingers',
   showHeader = false,
   navigation = [],
   ctaButton,

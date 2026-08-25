@@ -4,19 +4,19 @@ from apps.products.models import Category, Product
 
 @pytest.fixture
 def category(db):
-    return Category.objects.create(name='Jewellery', slug='jewellery')
+    return Category.objects.create(name='Rice', slug='rice')
 
 
 @pytest.fixture
 def product(db, category):
     return Product.objects.create(
-        name='Gold Statement Necklace',
-        slug='gold-statement-necklace',
+        name='Jollof Rice Special',
+        slug='jollof-rice-special',
         category=category,
-        description='Premium luxury necklace',
-        price=150000,
+        description='Classic Nigerian jollof rice with chicken',
+        price=5500,
         stock=10,
-        length='20',
+        length='',
         lace_type='',
     )
 

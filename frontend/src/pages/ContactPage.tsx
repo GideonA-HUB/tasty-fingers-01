@@ -35,7 +35,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <SEO title="Contact Us" description="Get in touch with JBLuxe Accessories" />
+      <SEO title="Contact Us" description="Get in touch with Tasty Fingers" />
       <div className="section-padding max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           <div className="lg:sticky lg:top-24">
@@ -50,9 +50,9 @@ export default function ContactPage() {
             </p>
 
             <div className="mt-6 rounded-luxury bg-gradient-to-br from-brand-pink-dark via-brand-pink to-brand-pink-dark p-6 text-white shadow-luxury">
-              <p className="text-sm font-medium">Luxury Accessories, Delivered with Care</p>
+              <p className="text-sm font-medium">Delicious Meals, Delivered with Care</p>
               <p className="text-white/85 text-sm mt-2">
-                Share what you’re looking for (jewellery, bags, watches, shoes, or gifts) and we’ll help you find the perfect piece.
+                Share what you’re craving (jollof, soups, grilled meals, or catering) and we’ll help you place the perfect order.
               </p>
             </div>
           </div>
@@ -107,7 +107,7 @@ export default function ContactPage() {
                   {...register('message')}
                   rows={6}
                   className="input-luxury resize-none"
-                  placeholder="Tell us what you're looking for (style, category, budget)..."
+                  placeholder="Tell us what you're craving (meals, catering, delivery)..."
                 />
                 {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message.message}</p>}
               </div>

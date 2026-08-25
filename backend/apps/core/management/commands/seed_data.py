@@ -15,7 +15,7 @@ from apps.site_config.models import SiteSettings, Testimonial, WhyChooseItem
 
 
 class Command(BaseCommand):
-    help = 'Seed initial data for JBLuxe Accessories'
+    help = 'Seed initial data for Tasty Fingers'
 
     def handle(self, *args, **options):
         # Always remove legacy hair-type categories that were auto-seeded in older deploys.
@@ -25,7 +25,7 @@ class Command(BaseCommand):
             admin_password = os.environ.get('ADMIN_INITIAL_PASSWORD', 'admin123!')
             User.objects.create_superuser(
                 username='admin',
-                email='admin@jbluxeaccessories.com',
+                email='admin@tastyfingers.com',
                 password=admin_password,
             )
             self.stdout.write(self.style.SUCCESS('Admin user created (username: admin)'))
@@ -33,51 +33,52 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.WARNING('Change the default admin password after first login.'))
 
         settings, _ = SiteSettings.objects.get_or_create(pk=1)
-        settings.site_name = 'JBLuxe Accessories'
-        settings.tagline = 'Luxury Fashion Accessories'
+        settings.site_name = 'Tasty Fingers'
+        settings.tagline = 'Premium Restaurant & Food Ordering'
         settings.meta_description = (
-            'Premium jewellery, bags, watches, shoes, sunglasses, perfumes and fashion accessories '
-            'for women and men. Luxury lifestyle products delivered with care.'
+            'Order delicious Nigerian and continental meals online from Tasty Fingers — '
+            'jollof rice, soups, peppered meats, seafood, snacks, drinks, and combo meals. '
+            'Delivery, takeaway, and pickup available.'
         )
         settings.delivery_fee = Decimal('4000')
         settings.currency = 'NGN'
         settings.currency_symbol = '₦'
         settings.is_vat_inclusive = False
-        settings.about_title = 'About JBLuxe Accessories'
-        settings.about_subtitle = 'Luxury Accessories, Delivered with Care'
+        settings.about_title = 'About Tasty Fingers'
+        settings.about_subtitle = 'Fresh Meals, Delivered with Care'
         settings.brand_story = (
-            'JBLuxe Accessories was born from a passion for elevated everyday style. '
-            'We curate jewellery, designer bags, watches, shoes, sunglasses, perfumes, and '
-            'fashion accessories for women and men — bringing world-class quality to discerning '
-            'clients across Nigeria and beyond.'
+            'Tasty Fingers was born from a love of bold flavours and generous portions. '
+            'We prepare Nigerian favourites and chef specials — from jollof rice and egusi '
+            'to peppered turkey, seafood, small chops, and refreshing drinks — for delivery, '
+            'takeaway, and pickup across Nigeria.'
         )
         settings.mission = (
-            'To deliver authentic luxury fashion accessories that empower every customer '
-            'to feel confident, elegant, and stylish.'
+            'To serve freshly prepared, flavourful meals that bring comfort and joy '
+            'to every table — online, on time, every time.'
         )
         settings.vision = (
-            "To become Africa's most trusted luxury accessories brand, "
-            'rivaling international premium fashion houses.'
+            "To become Nigeria's most loved online restaurant for authentic meals, "
+            'reliable delivery, and memorable dining experiences.'
         )
-        settings.why_choose_title = 'Why Choose JBLuxe Accessories'
-        settings.testimonials_title = 'What Our Clients Say'
+        settings.why_choose_title = 'Why Choose Tasty Fingers'
+        settings.testimonials_title = 'What Our Guests Say'
         settings.testimonials_subtitle = (
-            'Real stories from real customers who have experienced the JBLuxe Accessories difference'
+            'Real stories from real customers who have experienced the Tasty Fingers difference'
         )
-        settings.why_choose_subtitle = 'Authentic luxury accessories, crafted for elegance'
-        settings.hero_eyebrow = 'Luxury Fashion Accessories'
-        settings.hero_title = 'Discover Your Perfect Style'
+        settings.why_choose_subtitle = 'Fresh flavours, generous portions, delivered with care'
+        settings.hero_eyebrow = 'Premium Restaurant'
+        settings.hero_title = 'Order Your Favourite Meals'
         settings.hero_subtitle = (
-            'Explore our premium collection of jewellery, bags, watches, shoes, sunglasses, '
-            'and fashion accessories. Curated for women and men who demand excellence.'
+            'Explore our menu of Nigerian classics and chef specials — rice dishes, soups, '
+            'peppered meats, seafood, snacks, and drinks. Freshly prepared for delivery or pickup.'
         )
-        settings.hero_primary_cta_label = 'Shop Now'
+        settings.hero_primary_cta_label = 'View Menu'
         settings.hero_primary_cta_url = '/shop'
         settings.hero_secondary_cta_label = 'Browse Categories'
         settings.hero_secondary_cta_url = '/categories'
-        settings.hero_disclaimer = 'Nationwide delivery · Secure checkout · Luxury quality guaranteed'
-        settings.hero_social_proof_text = 'Trusted by style lovers across Nigeria'
-        settings.contact_email = 'contact@jbluxeaccessories.com'
+        settings.hero_disclaimer = 'Delivery & pickup · Secure checkout · Freshly prepared meals'
+        settings.hero_social_proof_text = 'Trusted by food lovers across Nigeria'
+        settings.contact_email = 'contact@tastyfingers.com'
         settings.whatsapp_number = '+2348135380528'
         settings.instagram_url = ''
         settings.tiktok_url = ''
@@ -97,22 +98,22 @@ class Command(BaseCommand):
         )
 
         if Product.objects.exists():
-            self.stdout.write('Products already exist, skipping product seed')
+            self.stdout.write('Meals already exist, skipping product seed')
         else:
             self.stdout.write(
-                'No products found. Add products in Django admin under your categories '
-                '(Jewellery, Bags, Watches, Shoes, and more).'
+                'No meals found. Add meals in Django admin under your food categories '
+                '(Rice, Soups, Peppered Meats, Seafood, Drinks, and more).'
             )
 
         if not WhyChooseItem.objects.exists():
             why_choose_data = [
-                ('Authentic Luxury Pieces', 'Genuine premium accessories sourced from trusted suppliers', 0),
-                ('Curated Collections', 'Jewellery, bags, watches, shoes, sunglasses & more', 1),
-                ('For Her & Him', 'Fashion accessories designed for women and men', 2),
-                ('Lasting Quality', 'Built to last with premium materials and craftsmanship', 3),
-                ('Effortless Elegance', 'Statement pieces that elevate every look', 4),
-                ('Fast Delivery', 'Swift nationwide delivery across Nigeria', 5),
-                ('Gift-Ready', 'Perfect luxury gifts for every occasion', 6),
+                ('Freshly Prepared', 'Meals cooked to order with quality ingredients', 0),
+                ('Full Menu Variety', 'Rice, soups, meats, seafood, snacks & drinks', 1),
+                ('Delivery & Pickup', 'Order online for home delivery or restaurant pickup', 2),
+                ('Generous Portions', 'Satisfying servings for individuals and families', 3),
+                ('Chef Specials', 'Signature dishes and combo meals worth ordering again', 4),
+                ('Fast Kitchen Prep', 'Efficient preparation so your order arrives hot', 5),
+                ('Secure Checkout', 'Pay safely online with Paystack or Flutterwave', 6),
             ]
             for title, description, order in why_choose_data:
                 WhyChooseItem.objects.create(
@@ -126,10 +127,10 @@ class Command(BaseCommand):
         if not Testimonial.objects.exists():
             Testimonial.objects.create(
                 name='Adaeze O.',
-                role='Verified Buyer',
+                role='Verified Guest',
                 content=(
-                    'The quality is absolutely stunning. My new jewellery set looks and feels '
-                    'incredibly premium. JBLuxe Accessories is the real deal!'
+                    'The jollof and peppered turkey were outstanding. Everything arrived hot '
+                    'and full of flavour. Tasty Fingers is the real deal!'
                 ),
                 rating=5,
                 is_featured=True,
@@ -139,8 +140,8 @@ class Command(BaseCommand):
                 name='Chioma M.',
                 role='Loyal Customer',
                 content=(
-                    "I've tried many brands but nothing compares. The bags and watches are "
-                    'beautifully finished. Worth every naira.'
+                    "I've ordered from many places but nothing compares. The soups and "
+                    'seafood packs are beautifully prepared. Worth every naira.'
                 ),
                 rating=5,
                 is_featured=True,

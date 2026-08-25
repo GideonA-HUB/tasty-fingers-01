@@ -27,7 +27,7 @@ export const useCurrencyStore = create<CurrencyState>()(
       setSettings: (settings) => set({ settings }),
     }),
     {
-      name: 'jbluxe-currency',
+      name: 'tasty-fingers-currency',
       partialize: (state) => ({ displayCurrency: state.displayCurrency }),
     },
   ),

@@ -62,10 +62,14 @@ export default function PolicyPage() {
 
   const adminContent = settings?.[policy.field];
   const rawContent = adminContent?.trim() ? adminContent : policy.defaultContent;
-  const content = rawContent.replace(
-    /jbluxeaccessories-project-production\.up\.railway\.app/gi,
-    'www.jbluxeaccessories.com',
-  );
+  const content = rawContent
+    .replace(
+      /jbluxeaccessories-project-production\.up\.railway\.app/gi,
+      'tasty-fingers-01-production.up.railway.app',
+    )
+    .replace(/www\.jbluxeaccessories\.com/gi, 'tastyfingers.com')
+    .replace(/jbluxeaccessories\.com/gi, 'tastyfingers.com')
+    .replace(/contact@jbluxeaccessories\.com/gi, 'contact@tastyfingers.com');
 
   const otherPolicies = (Object.keys(POLICY_META) as PolicyType[]).filter((k) => k !== pageType);
 
@@ -121,8 +125,8 @@ export default function PolicyPage() {
 
         <p className="text-center text-xs text-brand-accent/40 mt-8">
           Questions? Contact us at{' '}
-          <a href="mailto:contact@jbluxeaccessories.com" className="text-brand-pink hover:underline">
-            contact@jbluxeaccessories.com
+          <a href="mailto:contact@tastyfingers.com" className="text-brand-pink hover:underline">
+            contact@tastyfingers.com
           </a>
         </p>
       </div>

@@ -6,7 +6,7 @@ export default {
     extend: {
       colors: {
         brand: {
-          // Legacy token name kept for compatibility; values are JBLuxe black/white
+          // Legacy token name kept for compatibility; values are brand black/white
           pink: '#000000',
           'pink-dark': '#0a0a0a',
           'pink-light': '#333333',

@@ -55,7 +55,7 @@ export default function AdminReportsPage() {
 
           {topProducts && Array.isArray(topProducts) && topProducts.length > 0 && (
             <div>
-              <h2 className="font-semibold mb-4">Top Products</h2>
+              <h2 className="font-semibold mb-4">Top Meals</h2>
               <div className="bg-white rounded-card shadow-card overflow-hidden">
                 <table className="w-full text-sm">
                   <thead>

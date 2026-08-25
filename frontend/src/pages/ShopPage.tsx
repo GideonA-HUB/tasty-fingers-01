@@ -62,11 +62,11 @@ export default function ShopPage() {
     ? 'Featured'
     : filter === 'flash-sales'
     ? 'Flash Sales'
-    : 'Shop All';
+    : 'All Meals';
 
   const description = categoryData?.description
     ? categoryData.description
-    : `Browse ${title.toLowerCase()} at JBLuxe Accessories`;
+    : `Browse ${title.toLowerCase()} at Tasty Fingers`;
 
   return (
     <>

@@ -1,25 +1,25 @@
-export const DEFAULT_PRIVACY_POLICY = `Last updated: March 2026
+export const DEFAULT_PRIVACY_POLICY = `Last updated: August 2026
 
 1. Introduction
-JBLuxe Accessories ("we", "us", "our") operates www.jbluxeaccessories.com and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your data when you visit our website, create an account, place an order, or contact us.
+Tasty Fingers ("we", "us", "our") operates tasty-fingers-01-production.up.railway.app and tastyfingers.com and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your data when you visit our website, place a food order, or contact us.
 
 2. Information We Collect
 We may collect the following categories of personal data:
 • Identity & contact: full name, email address, phone number, delivery address, city, and state.
-• Order & transaction: products purchased, order history, payment references (processed by Paystack/Flutterwave — we do not store full card details).
+• Order & transaction: meals ordered, order history, payment references (processed by Paystack/Flutterwave — we do not store full card details).
 • Communications: messages sent via our contact form, WhatsApp, or email.
 • Technical: IP address, browser type, device information, and cookies used for site functionality and analytics.
 
 3. How We Use Your Information
 We use your data to:
-• Process and fulfil orders, including delivery and customer support.
-• Send order confirmations, shipping updates, and service-related communications.
+• Process and fulfil food orders, including delivery, pickup, and customer support.
+• Send order confirmations, kitchen/preparation updates, and service-related communications.
 • Respond to enquiries and resolve disputes.
-• Improve our website, products, and customer experience.
+• Improve our website, menu, and customer experience.
 • Comply with legal obligations and prevent fraud.
 
 4. Legal Basis for Processing
-We process personal data based on: (a) performance of a contract when you place an order; (b) your consent for marketing communications; (c) our legitimate interests in operating and improving our business; and (d) compliance with applicable Nigerian law.
+We process personal data based on: (a) performance of a contract when you place an order; (b) your consent for marketing communications; (c) our legitimate interests in operating and improving our restaurant; and (d) compliance with applicable Nigerian law.
 
 5. Sharing Your Information
 We do not sell your personal data. We may share information with:
@@ -32,7 +32,7 @@ We do not sell your personal data. We may share information with:
 We retain order and account records for as long as necessary to fulfil orders, resolve disputes, and meet legal and accounting requirements — typically up to seven (7) years for transaction records.
 
 7. Your Rights
-Subject to applicable law, you may request access, correction, deletion, or restriction of your personal data. To exercise these rights, contact us at contact@jbluxeaccessories.com.
+Subject to applicable law, you may request access, correction, deletion, or restriction of your personal data. To exercise these rights, contact us at contact@tastyfingers.com.
 
 8. Cookies
 We use essential cookies for cart functionality, session management, and site security. You may disable non-essential cookies through your browser settings.
@@ -47,21 +47,21 @@ Our services are not directed to individuals under 18. We do not knowingly colle
 We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated "Last updated" date.
 
 12. Contact Us
-For privacy-related enquiries: contact@jbluxeaccessories.com`;
+For privacy-related enquiries: contact@tastyfingers.com`;
 
-export const DEFAULT_TERMS_OF_SERVICE = `Last updated: March 2026
+export const DEFAULT_TERMS_OF_SERVICE = `Last updated: August 2026
 
 1. Agreement to Terms
-By accessing or using the JBLuxe Accessories website and purchasing our products, you agree to be bound by these Terms of Service. If you do not agree, please do not use our services.
+By accessing or using the Tasty Fingers website and ordering our meals, you agree to be bound by these Terms of Service. If you do not agree, please do not use our services.
 
-2. About JBLuxe Accessories
-JBLuxe Accessories is a luxury fashion accessories e-commerce brand offering premium jewellery, bags, watches, shoes, sunglasses, perfumes, and related lifestyle products for women and men in Nigeria and beyond.
+2. About Tasty Fingers
+Tasty Fingers is a premium online restaurant offering Nigerian and continental meals for delivery, takeaway, and pickup — including rice dishes, soups, peppered meats, seafood, snacks, drinks, and combo meals.
 
 3. Eligibility
 You must be at least 18 years old and capable of entering into a binding contract to use our services and place orders.
 
-4. Products & Pricing
-• All product descriptions, images, and specifications are provided in good faith. Slight variations in colour or finish may occur due to lighting, screens, or manufacturing.
+4. Meals & Pricing
+• All meal descriptions, images, and specifications are provided in good faith. Slight variations in plating or portion appearance may occur.
 • Prices are listed in Nigerian Naira (NGN) unless otherwise stated.
 • We reserve the right to correct pricing errors and to modify prices without prior notice.
 • Promotional offers, flash sales, and discounts are subject to stated terms and availability.
@@ -70,27 +70,27 @@ You must be at least 18 years old and capable of entering into a binding contrac
 • Placing an order constitutes an offer to purchase. We reserve the right to accept or decline any order.
 • Payment is processed securely via Paystack or Flutterwave at checkout.
 • An order is confirmed only after successful payment verification.
-• You are responsible for providing accurate delivery and contact information.
+• You are responsible for providing accurate delivery, pickup, and contact information.
 
-6. Delivery
-• Delivery fees and estimated timelines are displayed at checkout.
-• Risk of loss passes to you upon delivery to the address provided.
-• We are not liable for delays caused by third-party couriers, customs, or events beyond our reasonable control.
+6. Delivery & Pickup
+• Delivery fees and estimated preparation or delivery times are displayed at checkout.
+• Risk of loss passes to you upon delivery to the address provided or upon pickup.
+• We are not liable for delays caused by third-party couriers, traffic, or events beyond our reasonable control.
 
-7. Product Care & Use
-Luxury accessories require proper care. We are not responsible for damage resulting from misuse, improper handling, or failure to follow care instructions.
+7. Food Allergies & Dietary Needs
+Please inform us of allergies or dietary requirements when ordering. We take care in the kitchen, but cannot guarantee a completely allergen-free environment.
 
 8. Intellectual Property
-All website content, branding, logos, images, and text are owned by JBLuxe Accessories or our licensors. You may not reproduce, distribute, or exploit our content without written permission.
+All website content, branding, logos, images, and text are owned by Tasty Fingers or our licensors. You may not reproduce, distribute, or exploit our content without written permission.
 
 9. User Conduct
 You agree not to misuse our website, attempt unauthorised access, submit false information, or engage in fraudulent activity.
 
 10. Limitation of Liability
-To the fullest extent permitted by law, JBLuxe Accessories shall not be liable for indirect, incidental, special, or consequential damages arising from your use of our services or products. Our total liability for any claim shall not exceed the amount you paid for the relevant order.
+To the fullest extent permitted by law, Tasty Fingers shall not be liable for indirect, incidental, special, or consequential damages arising from your use of our services or meals. Our total liability for any claim shall not exceed the amount you paid for the relevant order.
 
 11. Indemnification
-You agree to indemnify JBLuxe Accessories against claims arising from your breach of these Terms or misuse of our services.
+You agree to indemnify Tasty Fingers against claims arising from your breach of these Terms or misuse of our services.
 
 12. Governing Law
 These Terms are governed by the laws of the Federal Republic of Nigeria. Disputes shall be subject to the exclusive jurisdiction of Nigerian courts.
@@ -99,17 +99,17 @@ These Terms are governed by the laws of the Federal Republic of Nigeria. Dispute
 We may revise these Terms at any time. Continued use of the website after changes constitutes acceptance.
 
 14. Contact
-Questions about these Terms: contact@jbluxeaccessories.com`;
+Questions about these Terms: contact@tastyfingers.com`;
 
-export const DEFAULT_REFUND_POLICY = `Last updated: March 2026
+export const DEFAULT_REFUND_POLICY = `Last updated: August 2026
 
 1. Overview
-At JBLuxe Accessories, we are committed to your satisfaction. This Refund Policy explains when refunds may be issued, how to request one, and the conditions that apply.
+At Tasty Fingers, we are committed to your satisfaction. This Refund Policy explains when refunds may be issued, how to request one, and the conditions that apply.
 
 2. General Refund Eligibility
 Refunds are considered only when ALL of the following conditions are met:
 • The transaction has been successfully identified, verified, and confirmed in our payment system (Paystack or Flutterwave).
-• The order has not been fulfilled, delivered, or substantially processed in accordance with your confirmed purchase.
+• The order has not been fulfilled, delivered, or substantially prepared in accordance with your confirmed purchase.
 • A valid refund request is submitted within the timeframe stated below with supporting evidence.
 
 3. Transaction Verification Requirement
@@ -117,21 +117,21 @@ No refund shall be processed unless the original transaction has been positively
 
 4. Eligible Refund Scenarios
 We may approve a refund where:
-• You received the wrong product (subject to photographic evidence and return of the item where applicable).
-• The product arrived significantly damaged due to shipping (reported within 48 hours of delivery with photos).
-• The product is materially not as described and unused, with original packaging intact.
-• We are unable to fulfil your order due to stock unavailability after payment.
+• You received the wrong meal (subject to photographic evidence where applicable).
+• The order arrived in a condition unfit for consumption due to delivery issues (reported promptly with photos).
+• The meal is materially not as described.
+• We are unable to fulfil your order due to unavailability after payment.
 
 5. Non-Refundable Situations
 Refunds will NOT be issued for:
-• Change of mind after purchase.
-• Products that have been worn, used, altered, or damaged by the customer.
-• Incorrect size, colour, or style selected by the customer where the product matches the order.
+• Change of mind after kitchen preparation has begun.
+• Meals that have been partially or fully consumed.
+• Incorrect portion, spice level, or customization selected by the customer where the meal matches the order.
 • Delays caused by incorrect delivery information provided by the customer.
-• Minor variations in colour or finish inherent to luxury accessories.
+• Minor variations in plating or portion appearance inherent to freshly prepared food.
 
 6. How to Request a Refund
-Contact us at contact@jbluxeaccessories.com or via WhatsApp with:
+Contact us at contact@tastyfingers.com or via WhatsApp with:
 • Your full name and order number
 • Date of purchase and payment reference
 • Clear description of the issue
@@ -139,20 +139,17 @@ Contact us at contact@jbluxeaccessories.com or via WhatsApp with:
 
 We will acknowledge your request within 2 business days and investigate within 5–7 business days.
 
-7. Return Process
-If a return is required, you will receive instructions including the return address. Items must be returned in original condition with all packaging, tags, and accessories. Return shipping costs may be borne by the customer unless the error was ours.
-
-8. Refund Method & Timeline
+7. Refund Method & Timeline
 Approved refunds are processed to the original payment method after transaction verification. Please allow 7–14 business days for the refund to appear in your account, depending on your bank or payment provider.
 
-9. Partial Refunds
-In some cases, a partial refund may be offered at our discretion — for example, for minor defects that do not affect overall usability.
+8. Partial Refunds
+In some cases, a partial refund may be offered at our discretion — for example, for missing items that do not affect the rest of the order.
 
-10. Chargebacks
+9. Chargebacks
 We encourage customers to contact us before initiating a chargeback. Unverified chargebacks may delay resolution and affect future orders.
 
-11. Contact
-Refund enquiries: contact@jbluxeaccessories.com | WhatsApp: +2348135380528`;
+10. Contact
+Refund enquiries: contact@tastyfingers.com | WhatsApp: +2348135380528`;
 
 export type PolicyType = 'privacy' | 'terms' | 'refund';
 
@@ -168,7 +165,7 @@ export const POLICY_META: Record<
   },
   terms: {
     title: 'Terms of Service',
-    subtitle: 'The terms governing your use of JBLuxe Accessories and our products.',
+    subtitle: 'The terms governing your use of Tasty Fingers and our meal ordering services.',
     field: 'terms_of_service',
     defaultContent: DEFAULT_TERMS_OF_SERVICE,
   },

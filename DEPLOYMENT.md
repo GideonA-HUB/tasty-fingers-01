@@ -1,4 +1,4 @@
-# JBLuxe Accessories — Railway Deployment Guide
+# Tasty Fingers — Railway Deployment Guide
 
 Deploy frontend + backend as a **single Railway service** with PostgreSQL.
 
@@ -30,7 +30,7 @@ Ensure your repo is on GitHub (already done).
 
 1. Go to [railway.app](https://railway.app) → **New Project**
 2. Choose **Deploy from GitHub repo**
-3. Select your `jbluxeaccessories` repository
+3. Select your `tasty-fingers-01` repository
 4. Railway detects `Dockerfile` and `railway.toml` automatically
 
 ---
@@ -56,10 +56,10 @@ In **Web Service → Variables**, add every variable from `.env.example`.
 | `SECRET_KEY` | Random 50+ char string | Generate: `python -c "import secrets; print(secrets.token_urlsafe(50))"` |
 | `DEBUG` | `False` | Never `True` in production |
 | `DJANGO_SETTINGS_MODULE` | `config.settings.production` | |
-| `ALLOWED_HOSTS` | `.railway.app,jbluxeaccessories-project-production.up.railway.app,www.jbluxeaccessories.com,jbluxeaccessories.com` | `.railway.app` matches all Railway subdomains |
-| `SITE_URL` | `https://www.jbluxeaccessories.com` | Or Railway URL until custom domain is ready |
+| `ALLOWED_HOSTS` | `.railway.app,tasty-fingers-01-production.up.railway.app,www.tastyfingers.com,tastyfingers.com` | `.railway.app` matches all Railway subdomains |
+| `SITE_URL` | `https://tasty-fingers-01-production.up.railway.app` | Switch to `https://www.tastyfingers.com` when custom domain is ready |
 | `FRONTEND_URL` | Same as `SITE_URL` | Used for payment callbacks |
-| `CORS_ALLOWED_ORIGINS` | `https://www.jbluxeaccessories.com,https://jbluxeaccessories.com,https://jbluxeaccessories-project-production.up.railway.app` | |
+| `CORS_ALLOWED_ORIGINS` | `https://tasty-fingers-01-production.up.railway.app,https://www.tastyfingers.com,https://tastyfingers.com` | |
 | `CSRF_TRUSTED_ORIGINS` | Same origins as CORS (with `https://`) | Required for Django Admin |
 | `RUN_SEED` | `true` | **First deploy only** — creates admin + sample data |
 
@@ -75,15 +75,15 @@ In **Web Service → Variables**, add every variable from `.env.example`.
 | `RESEND_API_KEY` | Resend | Order & contact emails |
 | `DEFAULT_FROM_EMAIL` | Resend | Sender address (must be verified domain) |
 | `ADMIN_EMAIL` | — | Receives new order notifications |
-| `CLOUDINARY_CLOUD_NAME` | Cloudinary | Product image storage |
-| `CLOUDINARY_API_KEY` | Cloudinary | Product image storage |
-| `CLOUDINARY_API_SECRET` | Cloudinary | Product image storage |
+| `CLOUDINARY_CLOUD_NAME` | Cloudinary | Meal image storage |
+| `CLOUDINARY_API_KEY` | Cloudinary | Meal image storage |
+| `CLOUDINARY_API_SECRET` | Cloudinary | Meal image storage |
 
 ### Commerce (defaults are fine)
 
 | Variable | Default |
 |----------|---------|
-| `SITE_NAME` | `JBLuxe Accessories` |
+| `SITE_NAME` | `Tasty Fingers` |
 | `DELIVERY_FEE` | `4000` |
 | `CURRENCY` | `NGN` |
 
@@ -116,20 +116,20 @@ In **Web Service → Variables**, add every variable from `.env.example`.
 
 ## Step 6 — After First Deploy
 
-1. Copy your Railway public URL (e.g. `https://jbluxeaccessories-project-production.up.railway.app`)
+1. Copy your Railway public URL (`https://tasty-fingers-01-production.up.railway.app`)
 2. Update these variables with the **exact URL** (and custom domain when ready):
    - `SITE_URL`
    - `FRONTEND_URL`
    - `CORS_ALLOWED_ORIGINS`
    - `CSRF_TRUSTED_ORIGINS`
-   - `SITE_NAME=JBLuxe Accessories`
-   - `DEFAULT_FROM_EMAIL=JBLuxe Accessories <orders@jbluxeaccessories.com>`
+   - `SITE_NAME=Tasty Fingers`
+   - `DEFAULT_FROM_EMAIL=Tasty Fingers <orders@tastyfingers.com>`
 3. **Remove** `RUN_SEED` or set to `false`
 4. Redeploy
 
 ### Default admin (created by seed on first deploy)
 
-- **URL:** `https://jbluxeaccessories-project-production.up.railway.app/admin/`
+- **URL:** `https://tasty-fingers-01-production.up.railway.app/admin/`
 - **Username:** from `ADMIN_USERNAME`
 - **Password:** from `ADMIN_PASSWORD`
 
@@ -142,7 +142,13 @@ In **Web Service → Variables**, add every variable from `.env.example`.
 Set payment callback URLs in your Paystack/Flutterwave dashboard:
 
 ```
-https://www.jbluxeaccessories.com/checkout/verify
+https://tasty-fingers-01-production.up.railway.app/checkout/verify
+```
+
+When custom domains are live, also use:
+
+```
+https://www.tastyfingers.com/checkout/verify
 ```
 
 ---
@@ -150,14 +156,14 @@ https://www.jbluxeaccessories.com/checkout/verify
 ## Step 8 — Configure Resend
 
 1. Verify your sending domain at [resend.com](https://resend.com)
-2. Set `DEFAULT_FROM_EMAIL` to an address on that domain (e.g. `JBLuxe Accessories <orders@jbluxeaccessories.com>`)
+2. Set `DEFAULT_FROM_EMAIL` to an address on that domain (e.g. `Tasty Fingers <orders@tastyfingers.com>`)
 
 ---
 
-## Step 9 — Upload Product Images
+## Step 9 — Upload Meal Images
 
-1. Go to `https://jbluxeaccessories-project-production.up.railway.app/admin/`
-2. Add products with images via Django Admin (uploads go to Cloudinary)
+1. Go to `https://tasty-fingers-01-production.up.railway.app/admin/`
+2. Add meals with images via Django Admin (uploads go to Cloudinary)
 3. Upload logo/favicon via **Site Configuration → Site Assets**
 
 ---
@@ -166,14 +172,14 @@ https://www.jbluxeaccessories.com/checkout/verify
 
 | Service | URL |
 |---------|-----|
-| Storefront | `https://www.jbluxeaccessories.com/` |
-| Railway URL | `https://jbluxeaccessories-project-production.up.railway.app/` |
-| API | `https://www.jbluxeaccessories.com/api/v1/` |
-| API Docs | `https://www.jbluxeaccessories.com/api/docs/` |
-| Django Admin | `https://jbluxeaccessories-project-production.up.railway.app/admin/` |
-| Owner Dashboard | `https://www.jbluxeaccessories.com/dashboard/login` |
-| Health Check | `https://www.jbluxeaccessories.com/api/v1/health/` |
-| Sitemap | `https://www.jbluxeaccessories.com/sitemap.xml` |
+| Storefront (Railway) | `https://tasty-fingers-01-production.up.railway.app/` |
+| Future domain | `https://www.tastyfingers.com/` |
+| API | `https://tasty-fingers-01-production.up.railway.app/api/v1/` |
+| API Docs | `https://tasty-fingers-01-production.up.railway.app/api/docs/` |
+| Django Admin | `https://tasty-fingers-01-production.up.railway.app/admin/` |
+| Owner Dashboard | `https://tasty-fingers-01-production.up.railway.app/dashboard/login` |
+| Health Check | `https://tasty-fingers-01-production.up.railway.app/api/v1/health/` |
+| Sitemap | `https://tasty-fingers-01-production.up.railway.app/sitemap.xml` |
 
 ---
 
@@ -191,7 +197,7 @@ Fixed in code: `SECURE_SSL_REDIRECT` is disabled on Railway. Railway terminates 
 ### ALLOWED_HOSTS
 Recommended production value:
 ```
-.railway.app,jbluxeaccessories-project-production.up.railway.app,www.jbluxeaccessories.com,jbluxeaccessories.com
+.railway.app,tasty-fingers-01-production.up.railway.app,www.tastyfingers.com,tastyfingers.com
 ```
 
 ### Build fails at `npm ci`
@@ -231,7 +237,8 @@ After setting Cloudinary variables, redeploy your Railway service.
 
 ## Custom Domain
 
-1. Railway → Service → **Settings** → **Networking** → **Custom Domain** → `www.jbluxeaccessories.com`
-2. Update `SITE_URL`, `FRONTEND_URL`, `CORS_ALLOWED_ORIGINS`, `CSRF_TRUSTED_ORIGINS`, `ALLOWED_HOSTS`
-3. Update Paystack/Flutterwave callback URLs
-4. Confirm DNS CNAME for `www` points at Railway
+1. Railway → Service → **Settings** → **Networking** → **Custom Domain** → `www.tastyfingers.com`
+2. Also add `tastyfingers.com` if desired
+3. Update `SITE_URL`, `FRONTEND_URL`, `CORS_ALLOWED_ORIGINS`, `CSRF_TRUSTED_ORIGINS`, `ALLOWED_HOSTS`
+4. Update Paystack/Flutterwave callback URLs
+5. Confirm DNS CNAME for `www` points at Railway

@@ -16,7 +16,7 @@ interface BrandLogoProps {
  */
 export default function BrandLogo({
   variant = 'default',
-  alt = 'JBLuxe Accessories',
+  alt = 'Tasty Fingers',
   className,
 }: BrandLogoProps) {
   const { assets, isLoading } = useSiteAssets();

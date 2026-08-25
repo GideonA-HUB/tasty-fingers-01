@@ -63,7 +63,7 @@ export default function AdminLogin() {
   return (
     <>
       <SEO
-        title="Admin Login - JBLuxe Accessories"
+        title="Admin Login - Tasty Fingers"
         description="Admin dashboard login"
       />
       
@@ -82,7 +82,7 @@ export default function AdminLogin() {
               transition={{ delay: 0.2 }}
               className="text-3xl md:text-4xl font-display font-bold text-brand-pink mb-2"
             >
-              JBLuxe Accessories
+              Tasty Fingers
             </motion.h1>
             <motion.p
               initial={{ opacity: 0 }}

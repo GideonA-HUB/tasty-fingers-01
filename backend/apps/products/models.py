@@ -20,7 +20,8 @@ class Category(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name_plural = 'Categories'
+        verbose_name = 'Food Category'
+        verbose_name_plural = 'Food Categories'
         ordering = ['order', 'name']
 
     def __str__(self):
@@ -66,10 +67,10 @@ class Product(models.Model):
     sale_price = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
     length = models.CharField(max_length=5, choices=LENGTH_CHOICES, blank=True)
     density = models.CharField(
-        'Grams',
+        'Portion / Size',
         max_length=50,
         blank=True,
-        help_text='Weight or size label, e.g. 50g, Small, Medium, Large',
+        help_text='Portion or size label, e.g. Small, Medium, Large, Family Pack',
     )
     lace_type = models.CharField(max_length=30, choices=LACE_TYPE_CHOICES, blank=True)
     color = models.CharField(max_length=100, blank=True)
@@ -82,12 +83,12 @@ class Product(models.Model):
     flash_sale_start_at = models.DateTimeField(
         blank=True,
         null=True,
-        help_text='When this product’s flash sale becomes active on the storefront.',
+        help_text='When this meal’s flash sale becomes active on the storefront.',
     )
     flash_sale_end_at = models.DateTimeField(
         blank=True,
         null=True,
-        help_text='When this product’s flash sale ends on the storefront.',
+        help_text='When this meal’s flash sale ends on the storefront.',
     )
     is_active = models.BooleanField(default=True)
     is_archived = models.BooleanField(default=False)
@@ -99,6 +100,8 @@ class Product(models.Model):
 
     class Meta:
         ordering = ['-created_at']
+        verbose_name = 'Meal'
+        verbose_name_plural = 'Meals'
 
     def __str__(self):
         return self.name
@@ -200,8 +203,8 @@ class ProductReview(models.Model):
 
     class Meta:
         ordering = ['-created_at']
-        verbose_name = 'Product Review'
-        verbose_name_plural = 'Product Reviews'
+        verbose_name = 'Meal Review'
+        verbose_name_plural = 'Meal Reviews'
 
     def __str__(self):
         return f'{self.name} - {self.product.name} ({self.rating}/5)'

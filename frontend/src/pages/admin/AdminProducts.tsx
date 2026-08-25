@@ -358,7 +358,7 @@ export default function AdminProducts() {
         animate={{ opacity: 1, y: 0 }}
         className="flex items-center justify-between gap-4 flex-wrap"
       >
-        <h1 className="text-2xl font-bold text-brand-black">Products Management</h1>
+        <h1 className="text-2xl font-bold text-brand-black">Meals Management</h1>
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
@@ -391,7 +391,7 @@ export default function AdminProducts() {
             onChange={(e) => setStatusFilter(e.target.value)}
             className="px-4 py-3 rounded-xl border border-brand-gray-200 focus:border-brand-pink outline-none"
           >
-            <option value="all">All Products</option>
+            <option value="all">All Meals</option>
             <option value="active">Active</option>
             <option value="inactive">Inactive</option>
             <option value="featured">Featured</option>

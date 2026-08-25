@@ -20,14 +20,14 @@ export const ShuffleHero = () => {
       <div className="relative z-10 w-full px-4 sm:px-6 md:px-8 py-10 sm:py-12 md:py-16 grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-6xl mx-auto min-h-[calc(100dvh-6.25rem)]">
         <div className="text-center md:text-left">
           <span className="block mb-3 sm:mb-4 text-xs sm:text-sm text-white/90 font-medium uppercase tracking-[0.15em]">
-            Luxury Fashion Accessories
+            Premium Restaurant & Food Ordering
           </span>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-semibold text-white leading-tight text-balance">
-            Discover Your Perfect Style
+            Order Your Favourite Meals
           </h1>
           <p className="text-sm sm:text-base md:text-lg text-white/85 my-4 md:my-6 max-w-lg mx-auto md:mx-0 leading-relaxed">
-            Explore our premium collection of jewellery, bags, watches, shoes, sunglasses, and fashion accessories.
-            Curated for women and men who demand excellence.
+            Explore our menu of jollof, soups, grilled specialties, sides, and drinks.
+            Fresh meals for delivery or pickup.
           </p>
           <Link
             to="/shop"
@@ -37,7 +37,7 @@ export const ShuffleHero = () => {
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-pink"
             )}
           >
-            Shop Now
+            View Menu
           </Link>
         </div>
         <div className="relative w-full max-w-md mx-auto md:max-w-none">

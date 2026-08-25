@@ -16,8 +16,8 @@ export default function CategoriesPage() {
   return (
     <>
       <SEO
-        title="Shop Categories"
-        description="Browse JBLuxe Accessories by category — jewellery, bags, watches, shoes, sunglasses, and more."
+        title="Menu Categories"
+        description="Browse Tasty Fingers by category — jollof, soups, rice dishes, grilled meals, and more."
       />
 
       <div className="section-padding max-w-7xl mx-auto">
@@ -33,14 +33,14 @@ export default function CategoriesPage() {
           />
           <div className="relative text-center">
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-white/90 mb-3">
-              Shop by Category
+              Browse the Menu
             </p>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-display font-semibold text-white mb-4">
-              Fashion Categories
+              Menu Categories
             </h1>
             <p className="text-white/85 max-w-xl mx-auto text-sm md:text-base leading-relaxed">
-              Explore our luxury collections — jewellery, bags, watches, shoes, sunglasses,
-              perfumes, and accessories for women and men.
+              Explore our food categories — jollof, soups, rice dishes, grilled specialties,
+              sides, and drinks for delivery or pickup.
             </p>
           </div>
         </motion.div>

@@ -79,8 +79,8 @@ export default function AdminDashboardPage() {
               <p className="text-sm text-brand-accent/50">Manage & update order statuses</p>
             </Link>
             <a href="/admin/" className="bg-white rounded-card p-6 shadow-card hover:shadow-luxury transition-shadow">
-              <h3 className="font-semibold mb-1">Products</h3>
-              <p className="text-sm text-brand-accent/50">Manage products in Django Admin</p>
+              <h3 className="font-semibold mb-1">Meals</h3>
+              <p className="text-sm text-brand-accent/50">Manage meals in Django Admin</p>
             </a>
             <Link to="/admin-dashboard/reports" className="bg-white rounded-card p-6 shadow-card hover:shadow-luxury transition-shadow">
               <h3 className="font-semibold mb-1">Reports</h3>

@@ -49,7 +49,7 @@
               <p style="margin:0 0 8px;font-size:14px;color:#555555;"><strong>Delivery Type:</strong> {{ order.get_delivery_type_display }}{% if order.delivery_type == 'international' %} — {{ order.get_international_region_display }}{% endif %}</p>
               <p style="margin:0 0 24px;font-size:14px;color:#555555;"><strong>Order Notes:</strong> {% if order.order_notes %}{{ order.order_notes }}{% else %}None{% endif %}</p>
 
-              <h2 style="margin:0 0 12px;font-size:14px;text-transform:uppercase;letter-spacing:0.08em;color:#111111;border-bottom:2px solid #000000;padding-bottom:8px;">Items Purchased</h2>
+              <h2 style="margin:0 0 12px;font-size:14px;text-transform:uppercase;letter-spacing:0.08em;color:#111111;border-bottom:2px solid #000000;padding-bottom:8px;">Meals Ordered</h2>
               {% for item in order_items %}
               <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin:0 0 10px;background:#fafafa;border-radius:10px;">
                 <tr>

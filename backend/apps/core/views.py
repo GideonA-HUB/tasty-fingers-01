@@ -7,4 +7,4 @@ class HealthCheckView(APIView):
     permission_classes = []
 
     def get(self, request):
-        return Response({'status': 'healthy', 'service': 'JBLuxe Accessories API'})
+        return Response({'status': 'healthy', 'service': 'Tasty Fingers API'})

@@ -39,52 +39,52 @@ const ICON_CYCLE: ComponentType<LucideProps>[] = [
 const DEFAULT_FEATURES: FeatureCarouselItem[] = [
   {
     id: "authentic",
-    label: "Authentic Luxury Pieces",
-    description: "Genuine premium accessories sourced from trusted suppliers.",
+    label: "Authentic Nigerian Flavours",
+    description: "Homestyle recipes prepared with quality ingredients.",
     image:
-      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1200&h=1500&fit=crop&auto=format&q=80",
+      "https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=1200&h=1500&fit=crop&auto=format&q=80",
   },
   {
     id: "curated",
-    label: "Curated Collections",
-    description: "Jewellery, bags, watches, shoes, sunglasses & more.",
+    label: "Full Menu Selection",
+    description: "Jollof, soups, grills, sides, drinks & more.",
     image:
-      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=1200&h=1500&fit=crop&auto=format&q=80",
+      "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=1200&h=1500&fit=crop&auto=format&q=80",
   },
   {
     id: "her-him",
-    label: "For Her & Him",
-    description: "Fashion accessories designed for women and men.",
+    label: "Meals for Everyone",
+    description: "Portions and dishes for individuals, families & groups.",
     image:
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1200&h=1500&fit=crop&auto=format&q=80",
+      "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200&h=1500&fit=crop&auto=format&q=80",
   },
   {
     id: "quality",
-    label: "Lasting Quality",
-    description: "Built to last with premium materials and craftsmanship.",
+    label: "Fresh Every Day",
+    description: "Made to order so every meal arrives hot and delicious.",
     image:
-      "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=1200&h=1500&fit=crop&auto=format&q=80",
+      "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1200&h=1500&fit=crop&auto=format&q=80",
   },
   {
     id: "elegance",
-    label: "Effortless Elegance",
-    description: "Statement pieces that elevate every look.",
+    label: "Crowd Favourites",
+    description: "Signature dishes that keep customers coming back.",
     image:
-      "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=1200&h=1500&fit=crop&auto=format&q=80",
+      "https://images.unsplash.com/photo-1544145945-f904253e6167?w=1200&h=1500&fit=crop&auto=format&q=80",
   },
   {
     id: "delivery",
     label: "Fast Delivery",
-    description: "Swift nationwide delivery across Nigeria.",
+    description: "Swift nationwide delivery and convenient pickup.",
     image:
-      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=1200&h=1500&fit=crop&auto=format&q=80",
+      "https://images.unsplash.com/photo-1526367790999-0150786686a2?w=1200&h=1500&fit=crop&auto=format&q=80",
   },
   {
     id: "gifts",
-    label: "Gift-Ready",
-    description: "Perfect luxury gifts for every occasion.",
+    label: "Catering Ready",
+    description: "Perfect for parties, offices, and special occasions.",
     image:
-      "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=1200&h=1500&fit=crop&auto=format&q=80",
+      "https://images.unsplash.com/photo-1555244162-803834f70033?w=1200&h=1500&fit=crop&auto=format&q=80",
   },
 ];
 
@@ -286,7 +286,7 @@ export function FeatureCarousel({
                   >
                     <div className="h-2 w-2 rounded-full bg-white shadow-[0_0_10px_white]" />
                     <span className="font-mono text-[9px] font-medium uppercase tracking-[0.28em] text-white/85 sm:text-[10px]">
-                      JBLuxe
+                      Tasty Fingers
                     </span>
                   </div>
                 </motion.div>

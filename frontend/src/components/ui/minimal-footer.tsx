@@ -65,7 +65,7 @@ function TikTokIcon({ className }: { className?: string }) {
 }
 
 const DEFAULT_TAGLINE =
-  'Premium jewellery, bags, watches, shoes and fashion accessories for women and men.';
+  'Authentic Nigerian meals for delivery and pickup — jollof, soups, grills, and more.';
 
 const shopLinks = [
   { title: 'All Products', href: '/shop' },
@@ -114,7 +114,7 @@ function FooterLinkColumn({
 }
 
 export function MinimalFooter({
-  siteName = 'JBLuxe Accessories',
+  siteName = 'Tasty Fingers',
   tagline,
   contactEmail,
   instagramUrl,
@@ -213,10 +213,10 @@ export function MinimalFooter({
       <div className="relative z-10 border-b border-white/10 px-4 py-10 sm:px-6 sm:py-12 md:px-8">
         <div className="mx-auto max-w-lg text-center">
           <h3 className="mb-2 font-display text-xl font-semibold tracking-tight sm:text-2xl">
-            Join Our Luxury Circle
+            Join Our Food Circle
           </h3>
           <p className="mb-6 text-sm text-white/55">
-            Exclusive access to new arrivals, promotions &amp; launches
+            Exclusive access to new menu items, promotions &amp; offers
           </p>
           {subscribed ? (
             <p className="font-medium text-white">Thank you for subscribing!</p>

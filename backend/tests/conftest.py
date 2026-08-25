@@ -12,7 +12,7 @@ def api_client():
 def admin_user(db):
     return User.objects.create_superuser(
         username='admin',
-        email='admin@jbluxeaccessories.com',
+        email='admin@tastyfingers.com',
         password='testpass123',
     )
 

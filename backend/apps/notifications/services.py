@@ -15,6 +15,11 @@ class EmailService:
         send_contact_notification_email(submission)
 
     @classmethod
+    def send_booking_notification(cls, inquiry):
+        from apps.core.email_utils import send_booking_notification_email
+        send_booking_notification_email(inquiry)
+
+    @classmethod
     def send_order_confirmed(cls, order):
         send_order_status_email(order, 'Order Confirmed')
 
@@ -75,4 +80,19 @@ class NotificationService:
             notification_type='contact_submission',
             title=f'New Contact: {submission.name}',
             message=submission.message[:200],
+        )
+
+    @classmethod
+    def notify_booking_submission(cls, inquiry):
+        label = inquiry.get_inquiry_type_display()
+        service = ''
+        if inquiry.event_service:
+            service = inquiry.event_service.name
+        elif inquiry.training_program:
+            service = inquiry.training_program.title
+        Notification.objects.create(
+            notification_type='booking_inquiry',
+            title=f'New Booking: {inquiry.full_name}',
+            message=f'{label} — {service}. Guests: {inquiry.guest_count or "N/A"}',
+            metadata={'inquiry_id': inquiry.id, 'email': inquiry.email},
         )

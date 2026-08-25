@@ -66,22 +66,26 @@ export function PulseFitHero({
   return (
     <section
       className={cn(
-        'relative flex w-full min-h-[100dvh] flex-col overflow-hidden bg-white',
+        'relative flex w-full min-h-[100dvh] flex-col overflow-hidden',
         className,
       )}
       style={{
-        background: 'linear-gradient(180deg, #F4F4F5 0%, #FAFAFA 45%, #FFFFFF 100%)',
+        background: 'linear-gradient(180deg, #C65A12 0%, #ED7D2B 42%, #F5A623 78%, #FFF7ED 100%)',
       }}
       role="banner"
       aria-label="Hero section"
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute -left-16 top-8 h-56 w-56 rounded-full bg-black/[0.04] blur-3xl sm:-left-24 sm:top-10 sm:h-[28rem] sm:w-[28rem]"
+        className="pointer-events-none absolute -left-16 top-8 h-56 w-56 rounded-full bg-white/10 blur-3xl sm:-left-24 sm:top-10 sm:h-[28rem] sm:w-[28rem]"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-12 bottom-16 h-48 w-48 rounded-full bg-black/[0.05] blur-3xl sm:-right-20 sm:bottom-24 sm:h-[22rem] sm:w-[22rem]"
+        className="pointer-events-none absolute -right-12 bottom-16 h-48 w-48 rounded-full bg-white/10 blur-3xl sm:-right-20 sm:bottom-24 sm:h-[22rem] sm:w-[22rem]"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-hero-radial"
       />
 
       {showHeader && (
@@ -91,7 +95,7 @@ export function PulseFitHero({
           transition={{ duration: 0.6 }}
           className="relative z-20 flex flex-row items-center justify-between px-4 py-5 sm:px-8 sm:py-8 lg:px-16"
         >
-          <div className="font-display text-lg font-bold text-black sm:text-2xl">{logo}</div>
+          <div className="font-display text-lg font-bold text-white sm:text-2xl">{logo}</div>
 
           <nav className="hidden flex-row items-center gap-8 lg:flex" aria-label="Main navigation">
             {navigation.map((item, index) => (
@@ -137,16 +141,16 @@ export function PulseFitHero({
             className="flex w-full max-w-4xl flex-col items-center gap-5 text-center sm:gap-7 md:gap-8"
           >
             {eyebrow && (
-              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-neutral-500 sm:text-xs sm:tracking-[0.22em]">
+              <span className="inline-flex items-center rounded-full border border-white/40 bg-white/10 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/95 backdrop-blur-sm sm:text-xs">
                 {eyebrow}
-              </p>
+              </span>
             )}
 
-            <h1 className="font-display text-[clamp(1.85rem,8vw,4.5rem)] font-semibold leading-[1.08] tracking-tight text-black text-balance">
+            <h1 className="font-display text-[clamp(1.85rem,8vw,4.5rem)] font-semibold leading-[1.08] tracking-tight text-white text-balance drop-shadow-sm">
               {title}
             </h1>
 
-            <p className="max-w-xl text-[0.95rem] leading-relaxed text-neutral-600 sm:text-[clamp(1rem,2vw,1.25rem)]">
+            <p className="max-w-xl text-[0.95rem] leading-relaxed text-white/90 sm:text-[clamp(1rem,2vw,1.25rem)]">
               {subtitle}
             </p>
 
@@ -161,7 +165,7 @@ export function PulseFitHero({
                   <button
                     type="button"
                     onClick={primaryAction.onClick}
-                    className="flex flex-row items-center justify-center gap-2 rounded-full bg-black px-6 py-3.5 text-base font-semibold text-white shadow-lg shadow-black/20 transition-all hover:scale-[1.02] hover:bg-neutral-900 active:scale-[0.98] sm:px-8 sm:py-4 sm:text-lg"
+                    className="flex flex-row items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-base font-semibold text-brand-pink shadow-lg shadow-black/20 transition-all hover:scale-[1.02] hover:bg-brand-orange-pale active:scale-[0.98] sm:px-8 sm:py-4 sm:text-lg"
                   >
                     {primaryAction.label}
                     <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
@@ -172,7 +176,7 @@ export function PulseFitHero({
                   <button
                     type="button"
                     onClick={secondaryAction.onClick}
-                    className="rounded-full border-2 border-black !bg-transparent px-6 py-3.5 text-base font-medium !text-black transition-all hover:scale-[1.02] hover:!bg-black hover:!text-white active:scale-[0.98] sm:px-8 sm:py-4 sm:text-lg"
+                    className="rounded-full border-2 border-white bg-transparent px-6 py-3.5 text-base font-medium text-white transition-all hover:scale-[1.02] hover:bg-white hover:text-brand-pink active:scale-[0.98] sm:px-8 sm:py-4 sm:text-lg"
                   >
                     {secondaryAction.label}
                   </button>
@@ -185,7 +189,7 @@ export function PulseFitHero({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="px-2 text-xs italic text-neutral-500 sm:text-sm"
+                className="px-2 text-xs italic text-white/75 sm:text-sm"
               >
                 {disclaimer}
               </motion.p>
@@ -208,7 +212,7 @@ export function PulseFitHero({
                     />
                   ))}
                 </div>
-                <span className="text-xs font-medium text-neutral-600 sm:text-sm">
+                <span className="text-xs font-medium text-white/90 sm:text-sm">
                   {socialProof.text}
                 </span>
               </motion.div>
@@ -227,13 +231,13 @@ export function PulseFitHero({
           <div
             className="pointer-events-none absolute bottom-0 left-0 top-0 z-10 hidden w-16 sm:block sm:w-[100px] md:w-[120px]"
             style={{
-              background: 'linear-gradient(90deg, #FFFFFF 0%, rgba(255,255,255,0) 100%)',
+              background: 'linear-gradient(90deg, #FFF7ED 0%, rgba(255,247,237,0) 100%)',
             }}
           />
           <div
             className="pointer-events-none absolute bottom-0 right-0 top-0 z-10 hidden w-16 sm:block sm:w-[100px] md:w-[120px]"
             style={{
-              background: 'linear-gradient(270deg, #FFFFFF 0%, rgba(255,255,255,0) 100%)',
+              background: 'linear-gradient(270deg, #FFF7ED 0%, rgba(255,247,237,0) 100%)',
             }}
           />
 

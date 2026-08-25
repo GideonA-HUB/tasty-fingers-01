@@ -21,6 +21,7 @@ import {
   X,
   ExternalLink,
   ShieldCheck,
+  CalendarDays,
 } from 'lucide-react';
 
 const navItems = [
@@ -31,6 +32,7 @@ const navItems = [
   { id: 'categories', label: 'Categories', icon: FolderOpen, path: '/dashboard/categories' },
   { id: 'reviews', label: 'Reviews', icon: Star, path: '/dashboard/reviews' },
   { id: 'notifications', label: 'Notifications', icon: Bell, path: '/dashboard/notifications' },
+  { id: 'bookings', label: 'Bookings & Training', icon: CalendarDays, path: '/dashboard/bookings' },
   { id: 'contacts', label: 'Contacts', icon: Mail, path: '/dashboard/contacts' },
   { id: 'hero-images', label: 'Hero Images', icon: Image, path: '/dashboard/hero-images' },
   { id: 'newsletter', label: 'Newsletter', icon: Newspaper, path: '/dashboard/newsletter' },
@@ -61,7 +63,7 @@ export default function AdminLayout() {
     document.documentElement.classList.remove('dark');
     document.documentElement.style.colorScheme = 'light';
     const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', '#000000');
+    if (meta) meta.setAttribute('content', '#ED7D2B');
 
     return () => {
       if (readPersistedTheme() === 'dark') {
@@ -149,7 +151,7 @@ export default function AdminLayout() {
             initial={{ x: -280 }}
             animate={{ x: 0 }}
             exit={{ x: -280 }}
-            className="fixed z-30 hidden h-full w-64 flex-col bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 lg:flex"
+            className="fixed z-30 hidden h-full w-64 flex-col bg-gradient-to-b from-[#C65A12] via-[#ED7D2B] to-[#A04810] lg:flex shadow-orange"
           >
             <SidebarContent />
           </motion.aside>
@@ -160,7 +162,7 @@ export default function AdminLayout() {
       {mobileOpen && (
         <div className="fixed inset-0 z-40 lg:hidden">
           <div className="absolute inset-0 bg-black/50" onClick={() => setMobileOpen(false)} />
-          <aside className="absolute left-0 top-0 flex h-full w-64 flex-col bg-gradient-to-b from-slate-900 to-slate-950">
+          <aside className="absolute left-0 top-0 flex h-full w-64 flex-col bg-gradient-to-b from-[#C65A12] via-[#ED7D2B] to-[#A04810]">
             <SidebarContent />
           </aside>
         </div>

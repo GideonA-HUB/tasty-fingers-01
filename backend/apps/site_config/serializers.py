@@ -4,7 +4,9 @@ from apps.core.media import absolute_media_url
 
 from .models import (
     AdminActivityLog,
+    BookingInquiry,
     ContactSubmission,
+    EventServiceType,
     HeroImage,
     NewsletterSubscriber,
     SiteAsset,
@@ -12,6 +14,7 @@ from .models import (
     CurrencySettings,
     SaleAnnouncement,
     Testimonial,
+    TrainingProgram,
     WhyChooseItem,
 )
 
@@ -182,3 +185,84 @@ class SaleAnnouncementSerializer(serializers.ModelSerializer):
 
     def get_poster_image(self, obj):
         return absolute_media_url(self.context.get('request'), obj.poster_image)
+
+
+class EventServiceTypeSerializer(serializers.ModelSerializer):
+    image = serializers.SerializerMethodField()
+
+    class Meta:
+        model = EventServiceType
+        fields = [
+            'id', 'name', 'slug', 'description', 'image',
+            'starting_price', 'is_active', 'order',
+        ]
+
+    def get_image(self, obj):
+        return absolute_media_url(self.context.get('request'), obj.image)
+
+
+class TrainingProgramSerializer(serializers.ModelSerializer):
+    image = serializers.SerializerMethodField()
+    highlights_list = serializers.SerializerMethodField()
+
+    class Meta:
+        model = TrainingProgram
+        fields = [
+            'id', 'title', 'slug', 'description', 'duration', 'price',
+            'image', 'highlights', 'highlights_list', 'is_active', 'order',
+        ]
+
+    def get_image(self, obj):
+        return absolute_media_url(self.context.get('request'), obj.image)
+
+    def get_highlights_list(self, obj):
+        if not obj.highlights:
+            return []
+        return [line.strip() for line in obj.highlights.splitlines() if line.strip()]
+
+
+class BookingInquiryCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BookingInquiry
+        fields = [
+            'inquiry_type', 'event_service', 'training_program',
+            'full_name', 'email', 'phone', 'organization',
+            'event_date', 'event_time', 'event_location',
+            'guest_count', 'event_size', 'budget',
+            'menu_preferences', 'message', 'reference_image',
+        ]
+
+    def validate(self, data):
+        inquiry_type = data.get('inquiry_type')
+        if inquiry_type == 'event' and not data.get('event_service'):
+            raise serializers.ValidationError({'event_service': 'Please select an event type.'})
+        if inquiry_type == 'training' and not data.get('training_program'):
+            raise serializers.ValidationError({'training_program': 'Please select a training program.'})
+        return data
+
+
+class BookingInquirySerializer(serializers.ModelSerializer):
+    event_service_name = serializers.CharField(source='event_service.name', read_only=True, default='')
+    training_program_title = serializers.CharField(source='training_program.title', read_only=True, default='')
+    reference_image = serializers.SerializerMethodField()
+    inquiry_type_display = serializers.CharField(source='get_inquiry_type_display', read_only=True)
+    status_display = serializers.CharField(source='get_status_display', read_only=True)
+    event_size_display = serializers.CharField(source='get_event_size_display', read_only=True)
+
+    class Meta:
+        model = BookingInquiry
+        fields = [
+            'id', 'inquiry_type', 'inquiry_type_display',
+            'event_service', 'event_service_name',
+            'training_program', 'training_program_title',
+            'full_name', 'email', 'phone', 'organization',
+            'event_date', 'event_time', 'event_location',
+            'guest_count', 'event_size', 'event_size_display',
+            'budget', 'menu_preferences', 'message',
+            'reference_image', 'status', 'status_display',
+            'admin_notes', 'created_at', 'updated_at',
+        ]
+        read_only_fields = ['id', 'created_at', 'updated_at']
+
+    def get_reference_image(self, obj):
+        return absolute_media_url(self.context.get('request'), obj.reference_image)

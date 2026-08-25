@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>New Booking Inquiry</title></head>
+<body style="margin:0;padding:0;background:#FFF7ED;font-family:'Segoe UI',Helvetica,Arial,sans-serif;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="padding:32px 16px;">
+    <tr><td align="center">
+      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:620px;background:#ffffff;border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(237,125,43,0.12);">
+        <tr>
+          <td style="background:linear-gradient(135deg,#C65A12,#ED7D2B);padding:28px 32px;text-align:center;">
+            <p style="margin:0;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.9);">New Booking</p>
+            <h1 style="margin:8px 0 0;font-size:24px;color:#ffffff;">{{ inquiry.full_name }}</h1>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:32px;">
+            <p style="margin:0 0 16px;font-size:14px;color:#555;"><strong>Type:</strong> {{ inquiry.get_inquiry_type_display }}</p>
+            {% if inquiry.event_service %}<p style="margin:0 0 12px;font-size:14px;color:#555;"><strong>Event:</strong> {{ inquiry.event_service.name }}</p>{% endif %}
+            {% if inquiry.training_program %}<p style="margin:0 0 12px;font-size:14px;color:#555;"><strong>Program:</strong> {{ inquiry.training_program.title }}</p>{% endif %}
+            <p style="margin:0 0 12px;font-size:14px;color:#555;"><strong>Email:</strong> {{ inquiry.email }}</p>
+            <p style="margin:0 0 12px;font-size:14px;color:#555;"><strong>Phone:</strong> {{ inquiry.phone }}</p>
+            {% if inquiry.event_date %}<p style="margin:0 0 12px;font-size:14px;color:#555;"><strong>Date:</strong> {{ inquiry.event_date }}{% if inquiry.event_time %} at {{ inquiry.event_time }}{% endif %}</p>{% endif %}
+            {% if inquiry.event_location %}<p style="margin:0 0 12px;font-size:14px;color:#555;"><strong>Location:</strong> {{ inquiry.event_location }}</p>{% endif %}
+            {% if inquiry.guest_count %}<p style="margin:0 0 12px;font-size:14px;color:#555;"><strong>Guests:</strong> {{ inquiry.guest_count }}</p>{% endif %}
+            {% if inquiry.event_size %}<p style="margin:0 0 12px;font-size:14px;color:#555;"><strong>Event Size:</strong> {{ inquiry.get_event_size_display }}</p>{% endif %}
+            {% if inquiry.budget %}<p style="margin:0 0 12px;font-size:14px;color:#555;"><strong>Budget:</strong> ₦{{ inquiry.budget }}</p>{% endif %}
+            {% if inquiry.menu_preferences %}<p style="margin:0 0 12px;font-size:14px;color:#555;"><strong>Menu Preferences:</strong> {{ inquiry.menu_preferences }}</p>{% endif %}
+            {% if inquiry.message %}<p style="margin:0;font-size:14px;color:#555;"><strong>Message:</strong> {{ inquiry.message }}</p>{% endif %}
+          </td>
+        </tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>

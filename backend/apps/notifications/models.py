@@ -8,6 +8,7 @@ class Notification(models.Model):
         ('large_order', 'Large Order Alert'),
         ('order_cancelled', 'Order Cancelled'),
         ('contact_submission', 'Contact Submission'),
+        ('booking_inquiry', 'Booking Inquiry'),
         ('low_stock', 'Low Stock'),
         ('daily_summary', 'Daily Summary'),
         ('weekly_summary', 'Weekly Summary'),

@@ -3,7 +3,9 @@ from django.utils.html import format_html
 
 from .models import (
     AdminActivityLog,
+    BookingInquiry,
     ContactSubmission,
+    EventServiceType,
     HeroImage,
     NewsletterSubscriber,
     SiteAsset,
@@ -11,6 +13,7 @@ from .models import (
     CurrencySettings,
     SaleAnnouncement,
     Testimonial,
+    TrainingProgram,
     WhyChooseItem,
 )
 
@@ -185,4 +188,57 @@ class SaleAnnouncementAdmin(admin.ModelAdmin):
         ('Call to action', {
             'fields': ('cta_label', 'cta_url'),
         }),
+    )
+
+
+@admin.register(EventServiceType)
+class EventServiceTypeAdmin(admin.ModelAdmin):
+    list_display = ['name', 'starting_price', 'preview', 'order', 'is_active']
+    list_filter = ['is_active']
+    list_editable = ['order', 'is_active']
+    prepopulated_fields = {'slug': ('name',)}
+    search_fields = ['name', 'description']
+
+    def preview(self, obj):
+        if obj.image:
+            return format_html('<img src="{}" style="max-height:40px;border-radius:6px;" />', obj.image.url)
+        return '-'
+    preview.short_description = 'Image'
+
+
+@admin.register(TrainingProgram)
+class TrainingProgramAdmin(admin.ModelAdmin):
+    list_display = ['title', 'duration', 'price', 'preview', 'order', 'is_active']
+    list_filter = ['is_active']
+    list_editable = ['order', 'is_active', 'price']
+    prepopulated_fields = {'slug': ('title',)}
+    search_fields = ['title', 'description']
+
+    def preview(self, obj):
+        if obj.image:
+            return format_html('<img src="{}" style="max-height:40px;border-radius:6px;" />', obj.image.url)
+        return '-'
+    preview.short_description = 'Image'
+
+
+@admin.register(BookingInquiry)
+class BookingInquiryAdmin(admin.ModelAdmin):
+    list_display = [
+        'full_name', 'inquiry_type', 'event_service', 'training_program',
+        'event_date', 'guest_count', 'status', 'created_at',
+    ]
+    list_filter = ['inquiry_type', 'status', 'event_size', 'created_at']
+    search_fields = ['full_name', 'email', 'phone', 'event_location', 'message']
+    readonly_fields = ['created_at', 'updated_at']
+    fieldsets = (
+        ('Inquiry', {'fields': ('inquiry_type', 'event_service', 'training_program', 'status')}),
+        ('Contact', {'fields': ('full_name', 'email', 'phone', 'organization')}),
+        ('Event Details', {
+            'fields': (
+                'event_date', 'event_time', 'event_location',
+                'guest_count', 'event_size', 'budget',
+                'menu_preferences', 'message', 'reference_image',
+            ),
+        }),
+        ('Admin', {'fields': ('admin_notes', 'created_at', 'updated_at')}),
     )

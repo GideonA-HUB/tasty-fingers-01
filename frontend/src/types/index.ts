@@ -238,3 +238,57 @@ export interface DashboardMetrics {
   delivered_orders: number;
   total_revenue: string;
 }
+
+export interface EventServiceType {
+  id: number;
+  name: string;
+  slug: string;
+  description: string;
+  image: string | null;
+  starting_price: string | null;
+  is_active: boolean;
+  order: number;
+}
+
+export interface TrainingProgram {
+  id: number;
+  title: string;
+  slug: string;
+  description: string;
+  duration: string;
+  price: string;
+  image: string | null;
+  highlights: string;
+  highlights_list: string[];
+  is_active: boolean;
+  order: number;
+}
+
+export interface BookingInquiry {
+  id: number;
+  inquiry_type: 'event' | 'training';
+  inquiry_type_display: string;
+  event_service: number | null;
+  event_service_name: string;
+  training_program: number | null;
+  training_program_title: string;
+  full_name: string;
+  email: string;
+  phone: string;
+  organization: string;
+  event_date: string | null;
+  event_time: string | null;
+  event_location: string;
+  guest_count: number | null;
+  event_size: string;
+  event_size_display: string;
+  budget: string | null;
+  menu_preferences: string;
+  message: string;
+  reference_image: string | null;
+  status: string;
+  status_display: string;
+  admin_notes: string;
+  created_at: string;
+  updated_at: string;
+}

@@ -109,8 +109,8 @@ export default function HomeHero() {
 
   const primaryLabel = settings?.hero_primary_cta_label?.trim() || 'Order Now';
   const primaryUrl = resolvePath(settings?.hero_primary_cta_url, '/shop');
-  const secondaryLabel = settings?.hero_secondary_cta_label?.trim() || 'Browse Menu';
-  const secondaryUrl = resolvePath(settings?.hero_secondary_cta_url, '/categories');
+  const secondaryLabel = settings?.hero_secondary_cta_label?.trim() || 'Book Catering';
+  const secondaryUrl = resolvePath(settings?.hero_secondary_cta_url, '/bookings');
 
   const cards =
     heroImages.length > 0

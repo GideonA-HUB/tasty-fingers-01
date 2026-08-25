@@ -369,3 +369,122 @@ class SaleAnnouncement(models.Model):
     def __str__(self):
         return self.title
 
+
+class EventServiceType(models.Model):
+    """Catering event types — birthdays, weddings, outdoor events, etc."""
+
+    name = models.CharField(max_length=120)
+    slug = models.SlugField(max_length=140, unique=True, blank=True)
+    description = models.TextField(blank=True)
+    image = models.ImageField(upload_to='booking_services/', blank=True, null=True)
+    starting_price = models.DecimalField(
+        max_digits=12, decimal_places=2, null=True, blank=True,
+        help_text='Optional starting price in NGN',
+    )
+    is_active = models.BooleanField(default=True)
+    order = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', 'name']
+        verbose_name = 'Event Service Type'
+        verbose_name_plural = 'Event Service Types'
+
+    def __str__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+
+
+class TrainingProgram(models.Model):
+    """Culinary training programs offered by Tasty Fingers."""
+
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=220, unique=True, blank=True)
+    description = models.TextField()
+    duration = models.CharField(max_length=100, blank=True, help_text='e.g. 4 weeks, 2 days')
+    price = models.DecimalField(max_digits=12, decimal_places=2)
+    image = models.ImageField(upload_to='training_programs/', blank=True, null=True)
+    highlights = models.TextField(
+        blank=True,
+        help_text='One highlight per line (shown on the bookings page)',
+    )
+    is_active = models.BooleanField(default=True)
+    order = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['order', 'title']
+        verbose_name = 'Training Program'
+        verbose_name_plural = 'Training Programs'
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
+
+class BookingInquiry(models.Model):
+    """Customer event catering or training inquiries."""
+
+    INQUIRY_TYPES = [
+        ('event', 'Event Catering'),
+        ('training', 'Training Program'),
+    ]
+    STATUS_CHOICES = [
+        ('pending', 'Pending'),
+        ('reviewing', 'Under Review'),
+        ('quoted', 'Quote Sent'),
+        ('confirmed', 'Confirmed'),
+        ('completed', 'Completed'),
+        ('cancelled', 'Cancelled'),
+    ]
+    EVENT_SIZES = [
+        ('small', 'Small (1–25 guests)'),
+        ('medium', 'Medium (26–75 guests)'),
+        ('large', 'Large (76–150 guests)'),
+        ('xlarge', 'Extra Large (150+ guests)'),
+    ]
+
+    inquiry_type = models.CharField(max_length=20, choices=INQUIRY_TYPES)
+    event_service = models.ForeignKey(
+        EventServiceType, on_delete=models.SET_NULL, null=True, blank=True,
+        related_name='inquiries',
+    )
+    training_program = models.ForeignKey(
+        TrainingProgram, on_delete=models.SET_NULL, null=True, blank=True,
+        related_name='inquiries',
+    )
+    full_name = models.CharField(max_length=120)
+    email = models.EmailField()
+    phone = models.CharField(max_length=20)
+    organization = models.CharField(max_length=200, blank=True)
+    event_date = models.DateField(null=True, blank=True)
+    event_time = models.TimeField(null=True, blank=True)
+    event_location = models.CharField(max_length=300, blank=True)
+    guest_count = models.PositiveIntegerField(null=True, blank=True)
+    event_size = models.CharField(max_length=20, choices=EVENT_SIZES, blank=True)
+    budget = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
+    menu_preferences = models.TextField(blank=True, help_text='Preferred meals, dietary needs, etc.')
+    message = models.TextField(blank=True)
+    reference_image = models.ImageField(upload_to='booking_references/', blank=True, null=True)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
+    admin_notes = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = 'Booking Inquiry'
+        verbose_name_plural = 'Booking Inquiries'
+
+    def __str__(self):
+        return f'{self.full_name} — {self.get_inquiry_type_display()} ({self.status})'
+

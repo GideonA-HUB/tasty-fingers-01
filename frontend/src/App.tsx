@@ -14,6 +14,7 @@ import AboutPage from '@/pages/AboutPage';
 import ContactPage from '@/pages/ContactPage';
 import CategoriesPage from '@/pages/CategoriesPage';
 import PolicyPage from '@/pages/PolicyPage';
+import BookingsPage from '@/pages/BookingsPage';
 
 const AdminLogin = lazy(() => import('@/pages/admin/AdminLogin'));
 const AdminDashboard = lazy(() => import('@/pages/admin/AdminDashboard'));
@@ -30,6 +31,7 @@ const AdminSettings = lazy(() => import('@/pages/admin/AdminSettings'));
 const AdminActivityLogs = lazy(() => import('@/pages/admin/AdminActivityLogs'));
 const AdminNotifications = lazy(() => import('@/pages/admin/AdminNotifications'));
 const AdminLegalAgreements = lazy(() => import('@/pages/admin/AdminLegalAgreements'));
+const AdminBookings = lazy(() => import('@/pages/admin/AdminBookings'));
 
 function ScrollToTopOnRouteChange() {
   const { pathname } = useLocation();
@@ -63,6 +65,7 @@ export default function App() {
           <Route path="checkout/verify" element={<CheckoutVerifyPage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="contact" element={<ContactPage />} />
+          <Route path="bookings" element={<BookingsPage />} />
           <Route path="privacy" element={<PolicyPage />} />
           <Route path="terms" element={<PolicyPage />} />
           <Route path="refund" element={<PolicyPage />} />
@@ -78,6 +81,7 @@ export default function App() {
           <Route path="/dashboard/reviews" element={<AdminReviews />} />
           <Route path="/dashboard/notifications" element={<AdminNotifications />} />
           <Route path="/dashboard/contacts" element={<AdminContacts />} />
+          <Route path="/dashboard/bookings" element={<AdminBookings />} />
           <Route path="/dashboard/hero-images" element={<AdminHeroImages />} />
           <Route path="/dashboard/newsletter" element={<AdminNewsletter />} />
           <Route path="/dashboard/testimonials" element={<AdminTestimonials />} />

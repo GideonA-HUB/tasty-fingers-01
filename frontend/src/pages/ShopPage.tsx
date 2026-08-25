@@ -55,13 +55,13 @@ export default function ShopPage() {
     : categoryData?.name
     ? categoryData.name
     : filter === 'new-arrivals'
-    ? 'New Arrivals'
+    ? 'Tasty Combos'
     : filter === 'bestsellers'
-    ? 'Best Sellers'
+    ? 'Popular Meals'
     : filter === 'featured'
     ? 'Featured'
     : filter === 'flash-sales'
-    ? 'Flash Sales'
+    ? 'Tasty Specials'
     : 'All Meals';
 
   const description = categoryData?.description

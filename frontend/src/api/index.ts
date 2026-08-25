@@ -1,10 +1,12 @@
 import { apiClient } from './client';
 import { unwrapList } from '@/utils/api';
 import type {
+  BookingInquiry,
   Category,
   CheckoutFormData,
   CurrencySettings,
   DashboardMetrics,
+  EventServiceType,
   Order,
   PaginatedResponse,
   Product,
@@ -12,6 +14,7 @@ import type {
   SaleAnnouncement,
   SiteSettings,
   Testimonial,
+  TrainingProgram,
   WhyChooseItem,
 } from '@/types';
 
@@ -76,6 +79,24 @@ export const siteApi = {
   contact: (data: { name: string; email: string; phone?: string; message: string }) =>
     apiClient.post('/site/contact/', data),
   newsletter: (email: string) => apiClient.post('/site/newsletter/', { email }),
+  eventServices: (): Promise<EventServiceType[]> =>
+    apiClient
+      .get<EventServiceType[] | PaginatedResponse<EventServiceType>>('/site/event-services/')
+      .then((r) => unwrapList<EventServiceType>(r.data)),
+  trainingPrograms: (): Promise<TrainingProgram[]> =>
+    apiClient
+      .get<TrainingProgram[] | PaginatedResponse<TrainingProgram>>('/site/training-programs/')
+      .then((r) => unwrapList<TrainingProgram>(r.data)),
+  submitBooking: (data: FormData) =>
+    apiClient.post('/site/bookings/', data, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    }),
+  adminBookings: (): Promise<BookingInquiry[]> =>
+    apiClient
+      .get<BookingInquiry[] | PaginatedResponse<BookingInquiry>>('/site/admin/bookings/')
+      .then((r) => unwrapList<BookingInquiry>(r.data)),
+  adminUpdateBooking: (id: number, data: Partial<BookingInquiry>) =>
+    apiClient.patch<BookingInquiry>(`/site/admin/bookings/${id}/`, data),
 };
 
 export const ordersApi = {

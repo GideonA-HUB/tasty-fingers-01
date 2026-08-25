@@ -91,6 +91,13 @@ export default function ProductPage() {
         schema={productSchema}
       />
 
+      <div className="bg-brand-gradient py-3 px-4">
+        <div className="max-w-7xl mx-auto flex items-center justify-between text-white text-sm">
+          <span className="font-medium">{product.category_name || 'Menu'}</span>
+          <span className="text-white/80 hidden sm:inline">Freshly prepared · Order online</span>
+        </div>
+      </div>
+
       <div className="section-padding max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,360px)_1fr] gap-6 lg:gap-10 items-start">
           {/* Gallery */}

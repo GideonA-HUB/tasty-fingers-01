@@ -88,3 +88,13 @@ def send_contact_notification_email(submission):
         template_name='emails/contact_notification.html',
         context={'submission': submission},
     )
+
+
+def send_booking_notification_email(inquiry):
+    """Owner email when a booking/training inquiry is submitted."""
+    send_html_email_async(
+        to=settings.ADMIN_EMAIL,
+        subject=f'New Booking Inquiry — {inquiry.full_name} | {settings.SITE_NAME}',
+        template_name='emails/booking_notification.html',
+        context={'inquiry': inquiry},
+    )

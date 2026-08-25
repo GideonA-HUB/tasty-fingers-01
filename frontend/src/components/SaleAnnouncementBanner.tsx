@@ -38,7 +38,7 @@ export default function SaleAnnouncementBanner() {
   const dateLabel = formatDateRange(announcement.start_date, announcement.end_date);
 
   return (
-    <section className="relative overflow-hidden border-y border-brand-pink/30 bg-brand-black">
+    <section className="relative overflow-hidden border-y border-brand-pink/30 bg-brand-gradient">
       {/* Continuous marquee */}
       <div className="border-b border-brand-pink/25 bg-brand-pink py-2.5 overflow-hidden">
         <div className="animate-announcement-marquee flex w-max whitespace-nowrap">
@@ -111,14 +111,14 @@ export default function SaleAnnouncementBanner() {
                   href={ctaPath}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-brand-black shadow-lg transition hover:bg-brand-gray-100"
+                  className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-brand-pink shadow-lg transition hover:bg-brand-orange-pale"
                 >
                   {announcement.cta_label || 'Order Now'}
                 </a>
               ) : (
                 <Link
                   to={ctaPath}
-                  className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-brand-black shadow-lg transition hover:bg-brand-gray-100"
+                  className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-brand-pink shadow-lg transition hover:bg-brand-orange-pale"
                 >
                   {announcement.cta_label || 'Order Now'}
                 </Link>

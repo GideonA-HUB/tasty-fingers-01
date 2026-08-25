@@ -12,7 +12,9 @@ from apps.notifications.services import EmailService, NotificationService
 
 from .models import (
     AdminActivityLog,
+    BookingInquiry,
     ContactSubmission,
+    EventServiceType,
     HeroImage,
     NewsletterSubscriber,
     SiteAsset,
@@ -20,12 +22,16 @@ from .models import (
     CurrencySettings,
     SaleAnnouncement,
     Testimonial,
+    TrainingProgram,
     WhyChooseItem,
 )
 from .serializers import (
     AdminActivityLogSerializer,
+    BookingInquiryCreateSerializer,
+    BookingInquirySerializer,
     ContactSubmissionSerializer,
     CurrencySettingsSerializer,
+    EventServiceTypeSerializer,
     HeroImageSerializer,
     NewsletterSubscribeSerializer,
     NewsletterSubscriberSerializer,
@@ -33,6 +39,7 @@ from .serializers import (
     SiteAssetSerializer,
     SiteSettingsSerializer,
     TestimonialSerializer,
+    TrainingProgramSerializer,
     WhyChooseItemSerializer,
 )
 
@@ -259,6 +266,87 @@ class AdminActivityLogsView(generics.ListAPIView):
     pagination_class = None
 
 
+class EventServiceTypesView(generics.ListAPIView):
+    authentication_classes = []
+    permission_classes = []
+    serializer_class = EventServiceTypeSerializer
+    pagination_class = None
+
+    def get_queryset(self):
+        return EventServiceType.objects.filter(is_active=True)
+
+
+class TrainingProgramsView(generics.ListAPIView):
+    authentication_classes = []
+    permission_classes = []
+    serializer_class = TrainingProgramSerializer
+    pagination_class = None
+
+    def get_queryset(self):
+        return TrainingProgram.objects.filter(is_active=True)
+
+
+class BookingSubmitView(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def post(self, request):
+        serializer = BookingInquiryCreateSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        inquiry = serializer.save()
+        try:
+            EmailService.send_booking_notification(inquiry)
+        except Exception:
+            logger.exception('Failed to send booking notification for inquiry %s', inquiry.id)
+        try:
+            NotificationService.notify_booking_submission(inquiry)
+        except Exception:
+            logger.exception('Failed to create booking notification for inquiry %s', inquiry.id)
+        return Response(
+            {'message': 'Your booking request has been received. We will contact you shortly.', 'id': inquiry.id},
+            status=status.HTTP_201_CREATED,
+        )
+
+
+class AdminEventServicesView(generics.ListCreateAPIView):
+    permission_classes = [IsAdminUser]
+    serializer_class = EventServiceTypeSerializer
+    queryset = EventServiceType.objects.all()
+    pagination_class = None
+
+
+class AdminEventServiceDetailView(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [IsAdminUser]
+    serializer_class = EventServiceTypeSerializer
+    queryset = EventServiceType.objects.all()
+
+
+class AdminTrainingProgramsView(generics.ListCreateAPIView):
+    permission_classes = [IsAdminUser]
+    serializer_class = TrainingProgramSerializer
+    queryset = TrainingProgram.objects.all()
+    pagination_class = None
+
+
+class AdminTrainingProgramDetailView(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [IsAdminUser]
+    serializer_class = TrainingProgramSerializer
+    queryset = TrainingProgram.objects.all()
+
+
+class AdminBookingInquiriesView(generics.ListAPIView):
+    permission_classes = [IsAdminUser]
+    serializer_class = BookingInquirySerializer
+    queryset = BookingInquiry.objects.select_related('event_service', 'training_program')
+    pagination_class = None
+
+
+class AdminBookingInquiryDetailView(generics.RetrieveUpdateAPIView):
+    permission_classes = [IsAdminUser]
+    serializer_class = BookingInquirySerializer
+    queryset = BookingInquiry.objects.select_related('event_service', 'training_program')
+
+
 class SitemapView(APIView):
     authentication_classes = []
     permission_classes = []
@@ -273,6 +361,7 @@ class SitemapView(APIView):
             {'loc': f'{site_url}/shop', 'changefreq': 'daily', 'priority': '0.9'},
             {'loc': f'{site_url}/about', 'changefreq': 'monthly', 'priority': '0.7'},
             {'loc': f'{site_url}/contact', 'changefreq': 'monthly', 'priority': '0.7'},
+            {'loc': f'{site_url}/bookings', 'changefreq': 'weekly', 'priority': '0.9'},
         ]
         for cat in Category.objects.filter(is_active=True):
             urls.append({

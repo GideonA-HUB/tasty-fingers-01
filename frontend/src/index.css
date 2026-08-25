@@ -10,11 +10,11 @@
   }
 
   body {
-    @apply bg-brand-white text-brand-accent font-sans transition-colors duration-300;
+    @apply bg-brand-cream text-brand-accent font-sans transition-colors duration-300;
   }
 
   .dark body {
-    @apply bg-dark-surface text-gray-100;
+    @apply bg-dark-surface text-orange-100;
   }
 
   * {
@@ -24,14 +24,14 @@
 
 @layer components {
   .btn-primary {
-    @apply font-medium px-6 py-3 rounded-full transition-all duration-300
+    @apply font-semibold px-6 py-3 rounded-full transition-all duration-300
            active:scale-[0.98] disabled:cursor-not-allowed;
-    background-color: #000000;
+    background-color: #ED7D2B;
     color: #ffffff;
   }
 
   .btn-primary:hover {
-    background-color: #1a1a1a;
+    background-color: #C65A12;
     color: #ffffff;
   }
 
@@ -40,27 +40,28 @@
   }
 
   .btn-outline {
-    @apply border border-brand-accent/20 text-brand-accent font-medium px-6 py-3 rounded-full
-           hover:border-brand-black hover:text-brand-black transition-all duration-300
+    @apply border-2 border-brand-pink text-brand-pink font-semibold px-6 py-3 rounded-full
+           hover:bg-brand-pink hover:text-white transition-all duration-300
            active:scale-[0.98]
-           dark:border-white/30 dark:text-gray-100 dark:hover:border-white dark:hover:text-white;
+           dark:border-brand-orange-light dark:text-brand-orange-light
+           dark:hover:bg-brand-orange-light dark:hover:text-dark-surface;
   }
 
   .btn-ghost {
     @apply border border-brand-gray-200 text-brand-accent text-sm font-medium px-4 py-2 rounded-full
-           hover:border-brand-black hover:text-brand-black transition-all duration-300
-           dark:border-white/25 dark:text-gray-100 dark:hover:border-white dark:hover:text-white dark:hover:bg-white/10;
+           hover:border-brand-pink hover:text-brand-pink transition-all duration-300
+           dark:border-orange-800/40 dark:text-orange-100 dark:hover:border-brand-orange-light dark:hover:text-brand-orange-light;
   }
 
   .luxury-card {
     @apply bg-white rounded-card shadow-card overflow-hidden
            transition-all duration-300 hover:shadow-luxury
-           dark:bg-dark-card dark:border dark:border-white/10 dark:shadow-none dark:hover:shadow-none;
+           dark:bg-dark-card dark:border dark:border-orange-900/30 dark:shadow-none;
   }
 
   .surface-card {
     @apply bg-white rounded-luxury shadow-luxury border border-brand-gray-100
-           dark:bg-dark-card dark:border-white/10 dark:shadow-none;
+           dark:bg-dark-card dark:border-orange-900/30 dark:shadow-none;
   }
 
   .section-padding {
@@ -71,25 +72,23 @@
     @apply w-full px-4 py-3 rounded-xl border border-brand-gray-200
            focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/20
            outline-none transition-all duration-200 bg-white text-brand-accent
-           dark:bg-dark-elevated dark:border-white/15 dark:text-gray-100
-           dark:placeholder:text-gray-500 dark:focus:border-brand-pink;
+           dark:bg-dark-elevated dark:border-orange-900/40 dark:text-orange-50
+           dark:placeholder:text-orange-200/50 dark:focus:border-brand-orange-light;
   }
 
   .page-muted {
-    @apply text-brand-accent/60 dark:text-gray-400;
+    @apply text-brand-accent/60 dark:text-orange-200/70;
   }
 
   .page-heading {
-    @apply text-brand-black dark:text-gray-50;
+    @apply text-brand-black dark:text-orange-50;
+  }
+
+  .brand-header-gradient {
+    @apply bg-brand-gradient shadow-orange;
   }
 }
 
-/*
- * Dark mode primary CTAs — placeholder removed; definitive rules live at
- * the end of this file so they always win the cascade.
- */
-
-/* Global dark-mode readability overrides for existing utility classes */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -105,25 +104,25 @@
   }
 
   .dark .text-brand-black {
-    @apply text-gray-50;
+    @apply text-orange-50;
   }
 
   .dark .text-brand-accent {
-    @apply text-gray-200;
+    @apply text-orange-100;
   }
 
   .dark .bg-white {
     @apply !bg-dark-card;
   }
 
-  /* Keep true white surfaces that must stay white in dark mode */
   .dark .bg-keep-white,
   .dark .keep-white {
     background-color: #ffffff !important;
-    color: #000000 !important;
+    color: #1A1208 !important;
   }
 
-  .dark .bg-brand-white {
+  .dark .bg-brand-white,
+  .dark .bg-brand-cream {
     @apply !bg-dark-surface;
   }
 
@@ -133,7 +132,7 @@
 
   .dark .border-brand-gray-100,
   .dark .border-brand-gray-200 {
-    @apply !border-white/10;
+    @apply !border-orange-900/30;
   }
 
   .dark .shadow-luxury,
@@ -142,46 +141,25 @@
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
   }
 
-  .dark .text-brand-accent\/75 {
-    color: rgb(203 213 225);
-  }
-
-  .dark .text-brand-accent\/80 {
-    color: rgb(212 212 212);
-  }
-
-  .dark .text-brand-accent\/70 {
-    color: rgb(203 213 225);
-  }
-
-  .dark .text-brand-accent\/60 {
-    color: rgb(163 163 163);
-  }
-
-  .dark .text-brand-accent\/50 {
-    color: rgb(163 163 163);
-  }
-
-  .dark .text-brand-accent\/40 {
-    color: rgb(115 115 115);
-  }
+  .dark .text-brand-accent\/75 { color: rgb(254 215 170); }
+  .dark .text-brand-accent\/80 { color: rgb(254 215 170); }
+  .dark .text-brand-accent\/70 { color: rgb(253 186 116); }
+  .dark .text-brand-accent\/60 { color: rgb(251 146 60); }
+  .dark .text-brand-accent\/50 { color: rgb(234 88 12 / 0.7); }
+  .dark .text-brand-accent\/40 { color: rgb(234 88 12 / 0.55); }
 
   .dark .bg-red-50 {
     @apply !bg-red-950/40;
   }
 
   .dark .hover\:bg-brand-gray-50:hover {
-    @apply !bg-white/5;
+    @apply !bg-orange-950/30;
   }
 }
 
 @keyframes x-slider {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(calc(-50% - 1.25rem));
-  }
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(calc(-50% - 1.25rem)); }
 }
 
 .animate-x-slider {
@@ -189,12 +167,8 @@
 }
 
 @keyframes announcement-marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .animate-announcement-marquee {
@@ -202,10 +176,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-announcement-marquee {
-    animation: none;
-  }
-
+  .animate-announcement-marquee,
   .animate-scroll-horizontal,
   .animate-scroll-horizontal-reverse,
   .animate-fade-in-up {
@@ -215,22 +186,9 @@
   }
 }
 
-/* Community testimonials marquee */
 .mask-fade {
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 8%,
-    black 92%,
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 8%,
-    black 92%,
-    transparent 100%
-  );
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
 }
 
 .group:hover .animate-scroll-horizontal,
@@ -238,85 +196,77 @@
   animation-play-state: paused;
 }
 
-/*
- * brand-pink tokens map to black in light mode.
- * In dark mode, invert accents so text/buttons stay visible.
- */
+/* Orange brand tokens in dark mode */
 .dark .text-brand-pink {
-  color: #ffffff !important;
+  color: #F5A623 !important;
 }
 
 .dark .hover\:text-brand-pink:hover,
 .dark .group:hover .group-hover\:text-brand-pink {
-  color: #ffffff !important;
+  color: #F5A623 !important;
 }
 
 .dark .bg-brand-pink {
-  background-color: #ffffff !important;
-  color: #000000 !important;
+  background-color: #ED7D2B !important;
+  color: #ffffff !important;
 }
 
 .dark .hover\:bg-brand-pink:hover,
 .dark .hover\:bg-brand-pink\/90:hover {
-  background-color: #e5e5e5 !important;
-  color: #000000 !important;
+  background-color: #C65A12 !important;
+  color: #ffffff !important;
 }
 
 .dark .bg-brand-pink-dark {
-  background-color: #161616 !important;
+  background-color: #C65A12 !important;
 }
 
 .dark .hover\:bg-brand-pink-dark:hover {
-  background-color: #1f1f1f !important;
+  background-color: #A04810 !important;
 }
 
 .dark .text-brand-pink-light {
-  color: #d4d4d4 !important;
+  color: #F5A623 !important;
 }
 
 .dark .border-brand-pink,
 .dark .hover\:border-brand-pink:hover {
-  border-color: #ffffff !important;
+  border-color: #ED7D2B !important;
 }
 
 .dark .fill-brand-pink {
-  fill: #ffffff !important;
+  fill: #ED7D2B !important;
 }
 
 .dark .from-brand-pink,
 .dark .from-brand-pink-dark {
-  --tw-gradient-from: #0a0a0a var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(10 10 10 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-from: #C65A12 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(198 90 18 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
 .dark .via-brand-pink {
-  --tw-gradient-to: rgb(22 22 22 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), #161616 var(--tw-gradient-via-position),
-    var(--tw-gradient-to);
+  --tw-gradient-to: rgb(237 125 43 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), #ED7D2B var(--tw-gradient-via-position), var(--tw-gradient-to);
 }
 
 .dark .to-brand-pink-dark {
-  --tw-gradient-to: #0a0a0a var(--tw-gradient-to-position);
+  --tw-gradient-to: #A04810 var(--tw-gradient-to-position);
 }
 
-/*
- * FINAL dark-mode CTA override (end of file = last in cascade).
- * Targets Add to Cart, Submit Review, Checkout, Pay, and all .btn-primary CTAs.
- * Uses hex colors (not bg-white) so the global dark bg-white→card remap cannot win.
- */
+/* Primary CTAs — orange in both themes */
 html.dark button.btn-primary,
 html.dark a.btn-primary,
 html.dark .btn-primary,
 .dark button.btn-primary,
 .dark a.btn-primary,
 .dark .btn-primary {
-  background-color: #ffffff !important;
+  background-color: #ED7D2B !important;
   background-image: none !important;
-  color: #000000 !important;
-  -webkit-text-fill-color: #000000 !important;
-  border: 1px solid #ffffff !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35) !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border: 1px solid #ED7D2B !important;
+  box-shadow: 0 4px 16px rgba(237, 125, 43, 0.35) !important;
   opacity: 1 !important;
 }
 
@@ -326,24 +276,21 @@ html.dark .btn-primary:hover,
 .dark button.btn-primary:hover,
 .dark a.btn-primary:hover,
 .dark .btn-primary:hover {
-  background-color: #f3f3f3 !important;
-  color: #000000 !important;
-  -webkit-text-fill-color: #000000 !important;
-  border-color: #f3f3f3 !important;
+  background-color: #C65A12 !important;
+  color: #ffffff !important;
+  border-color: #C65A12 !important;
 }
 
 html.dark button.btn-primary:disabled,
 html.dark .btn-primary:disabled,
 .dark button.btn-primary:disabled,
 .dark .btn-primary:disabled {
-  background-color: #d4d4d4 !important;
-  color: #111111 !important;
-  -webkit-text-fill-color: #111111 !important;
-  opacity: 0.85 !important;
+  background-color: #9a4a0e !important;
+  opacity: 0.7 !important;
   cursor: not-allowed;
 }
 
-/* Dual black/white snake page loader */
+/* Page loader */
 .snake-loader {
   position: relative;
   width: 3.25rem;
@@ -358,12 +305,8 @@ html.dark .btn-primary:disabled,
 
 .snake-loader__track {
   fill: none;
-  stroke: rgba(0, 0, 0, 0.08);
+  stroke: rgba(237, 125, 43, 0.15);
   stroke-width: 4;
-}
-
-.dark .snake-loader__track {
-  stroke: rgba(255, 255, 255, 0.12);
 }
 
 .snake-loader__snake {
@@ -373,58 +316,45 @@ html.dark .btn-primary:disabled,
 }
 
 .snake-loader__snake--black {
-  stroke: #000000;
+  stroke: #ED7D2B;
   stroke-dasharray: 70 120;
   stroke-dashoffset: 0;
   animation: snake-dash 1.05s ease-in-out infinite;
 }
 
 .snake-loader__snake--white {
-  stroke: #ffffff;
+  stroke: #F5A623;
   stroke-dasharray: 50 140;
   stroke-dashoffset: 80;
   animation: snake-dash-reverse 1.05s ease-in-out infinite;
-  filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.35));
+}
+
+.dark .snake-loader__track {
+  stroke: rgba(245, 166, 35, 0.15);
 }
 
 .dark .snake-loader__snake--black {
-  stroke: #ffffff;
-  filter: none;
+  stroke: #F5A623;
 }
 
 .dark .snake-loader__snake--white {
-  stroke: #000000;
-  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.35));
+  stroke: #ED7D2B;
 }
 
 @keyframes snake-spin {
-  to {
-    transform: rotate(360deg);
-  }
+  to { transform: rotate(360deg); }
 }
 
 @keyframes snake-dash {
-  0% {
-    stroke-dashoffset: 0;
-  }
-  50% {
-    stroke-dashoffset: -40;
-  }
-  100% {
-    stroke-dashoffset: -90;
-  }
+  0% { stroke-dashoffset: 0; }
+  50% { stroke-dashoffset: -40; }
+  100% { stroke-dashoffset: -90; }
 }
 
 @keyframes snake-dash-reverse {
-  0% {
-    stroke-dashoffset: 80;
-  }
-  50% {
-    stroke-dashoffset: 120;
-  }
-  100% {
-    stroke-dashoffset: 170;
-  }
+  0% { stroke-dashoffset: 80; }
+  50% { stroke-dashoffset: 120; }
+  100% { stroke-dashoffset: 170; }
 }
 
 @media (prefers-reduced-motion: reduce) {

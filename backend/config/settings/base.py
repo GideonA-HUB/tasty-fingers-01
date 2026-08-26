@@ -29,7 +29,7 @@ INSTALLED_APPS = [
     'apps.products',
     'apps.orders',
     'apps.payments',
-    'apps.accounts',
+    'apps.accounts.apps.AccountsConfig',
     'apps.notifications',
     'apps.analytics',
     'apps.site_config',

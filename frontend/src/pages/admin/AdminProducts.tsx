@@ -105,23 +105,6 @@ const EMPTY_FORM: ProductFormState = {
   videos: [],
 };
 
-const LENGTH_OPTIONS = [
-  '8', '10', '12', '14', '16', '18', '20', '22', '24', '26', '28', '30', '32', '34', '36', '40',
-];
-
-const LACE_OPTIONS: { value: string; label: string }[] = [
-  { value: '', label: 'Select lace type' },
-  { value: 'hd_lace', label: 'HD Lace' },
-  { value: 'transparent_lace', label: 'Transparent Lace' },
-  { value: 'swiss_lace', label: 'Swiss Lace' },
-  { value: 'frontal', label: 'Frontal' },
-  { value: 'closure', label: 'Closure' },
-  { value: 'fringe', label: 'Fringe' },
-  { value: 'full_lace', label: 'Full Lace' },
-  { value: 'glueless', label: 'Glueless' },
-  { value: 'none', label: 'None' },
-];
-
 const inputClass =
   'w-full px-4 py-3 rounded-xl border border-brand-gray-200 focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/20 outline-none transition-all';
 const labelClass = 'block text-sm font-medium text-brand-accent mb-2';
@@ -193,10 +176,11 @@ function buildProductFormData(form: ProductFormState): FormData {
   formData.append('stock', form.stock || '0');
   formData.append('description', form.description || form.name);
   formData.append('short_description', form.short_description);
-  formData.append('length', form.length);
+  // Clear legacy fashion attributes — meals use portion/size (density) only
+  formData.append('length', '');
   formData.append('density', form.density);
-  formData.append('lace_type', form.lace_type);
-  formData.append('color', form.color);
+  formData.append('lace_type', '');
+  formData.append('color', '');
   formData.append('is_featured', String(form.is_featured));
   formData.append('is_bestseller', String(form.is_bestseller));
   formData.append('is_new_arrival', String(form.is_new_arrival));
@@ -394,9 +378,9 @@ export default function AdminProducts() {
             <option value="all">All Meals</option>
             <option value="active">Active</option>
             <option value="inactive">Inactive</option>
-            <option value="featured">Featured</option>
-            <option value="bestseller">Bestsellers</option>
-            <option value="new">New Arrivals</option>
+            <option value="featured">Chef&apos;s Picks</option>
+            <option value="bestseller">Popular Meals</option>
+            <option value="new">Tasty Combos</option>
           </select>
         </div>
       </motion.div>
@@ -498,22 +482,22 @@ export default function AdminProducts() {
                       <div className="flex gap-2 flex-wrap">
                         {product.is_featured && (
                           <span className="px-2 py-1 rounded-full text-xs font-medium bg-brand-pink/10 text-brand-pink">
-                            Featured
+                            Chef&apos;s Pick
                           </span>
                         )}
                         {product.is_bestseller && (
                           <span className="px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                            Bestseller
+                            Popular
                           </span>
                         )}
                         {product.is_new_arrival && (
                           <span className="px-2 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-                            New
+                            Combo
                           </span>
                         )}
                         {product.is_flash_sale && (
                           <span className="px-2 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
-                            Flash Sale
+                            Today&apos;s Deal
                           </span>
                         )}
                       </div>
@@ -669,52 +653,13 @@ export default function AdminProducts() {
                     />
                   </div>
                   <div>
-                    <label className={labelClass}>Length</label>
-                    <select
-                      value={form.length}
-                      onChange={(e) => setForm({ ...form, length: e.target.value })}
-                      className={inputClass}
-                    >
-                      <option value="">Select length</option>
-                      {LENGTH_OPTIONS.map((len) => (
-                        <option key={len} value={len}>
-                          {len}&quot;
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div>
-                    <label className={labelClass}>Grams</label>
+                    <label className={labelClass}>Portion / Size</label>
                     <input
                       type="text"
                       value={form.density}
                       onChange={(e) => setForm({ ...form, density: e.target.value })}
                       className={inputClass}
-                      placeholder="e.g., 200g"
-                    />
-                  </div>
-                  <div>
-                    <label className={labelClass}>Lace Type</label>
-                    <select
-                      value={form.lace_type}
-                      onChange={(e) => setForm({ ...form, lace_type: e.target.value })}
-                      className={inputClass}
-                    >
-                      {LACE_OPTIONS.map((opt) => (
-                        <option key={opt.value || 'empty'} value={opt.value}>
-                          {opt.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div>
-                    <label className={labelClass}>Color</label>
-                    <input
-                      type="text"
-                      value={form.color}
-                      onChange={(e) => setForm({ ...form, color: e.target.value })}
-                      className={inputClass}
-                      placeholder="e.g., Natural Black"
+                      placeholder="e.g. Small, Medium, Large, Family Pack"
                     />
                   </div>
                   <div className="md:col-span-2">
@@ -811,11 +756,11 @@ export default function AdminProducts() {
                   <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                     {(
                       [
-                        ['is_active', 'Active (visible on website)'],
-                        ['is_featured', 'Featured'],
-                        ['is_bestseller', 'Bestseller'],
-                        ['is_new_arrival', 'New Arrival'],
-                        ['is_flash_sale', 'Flash Sale'],
+                        ['is_active', 'Available on menu'],
+                        ['is_featured', "Chef's Pick"],
+                        ['is_bestseller', 'Popular Meal'],
+                        ['is_new_arrival', 'Tasty Combo'],
+                        ['is_flash_sale', "Today's Deal"],
                       ] as const
                     ).map(([key, label]) => (
                       <label key={key} className="flex items-center gap-2">
@@ -845,7 +790,7 @@ export default function AdminProducts() {
                   {form.is_flash_sale && (
                     <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4 rounded-xl border border-brand-pink/20 bg-brand-pink/5 p-4">
                       <div>
-                        <label className={labelClass}>Flash Sale Starts At</label>
+                        <label className={labelClass}>Deal Starts At</label>
                         <input
                           type="datetime-local"
                           value={form.flash_sale_start_at}
@@ -859,7 +804,7 @@ export default function AdminProducts() {
                         </p>
                       </div>
                       <div>
-                        <label className={labelClass}>Flash Sale Ends At</label>
+                        <label className={labelClass}>Deal Ends At</label>
                         <input
                           type="datetime-local"
                           value={form.flash_sale_end_at}

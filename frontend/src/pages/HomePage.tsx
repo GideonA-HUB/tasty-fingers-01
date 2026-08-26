@@ -59,7 +59,6 @@ export default function HomePage() {
       };
     });
 
-    // Prefer active sales: started (or no start) and not yet ended → count down to earliest end
     const activeEnds = windows
       .filter((w) => w.end && w.end > now && (!w.start || w.start <= now))
       .map((w) => w.end as number);
@@ -67,7 +66,6 @@ export default function HomePage() {
       return { mode: 'ends' as const, target: Math.min(...activeEnds) };
     }
 
-    // Upcoming sales → count down to earliest start
     const upcomingStarts = windows
       .filter((w) => w.start && w.start > now && (!w.end || w.end > now))
       .map((w) => w.start as number);
@@ -75,7 +73,6 @@ export default function HomePage() {
       return { mode: 'starts' as const, target: Math.min(...upcomingStarts) };
     }
 
-    // Fallback: any future end date
     const futureEnds = windows
       .filter((w) => w.end && w.end > now)
       .map((w) => w.end as number);
@@ -106,16 +103,11 @@ export default function HomePage() {
     <>
       <SEO />
 
-      {/* Hero */}
       <HomeHero />
-
-      {/* Sale / Preorder Announcement */}
       <SaleAnnouncementBanner />
 
-      {/* Categories */}
       {categories.length > 0 && (
         <section className="section-padding max-w-7xl mx-auto">
-          {/* Mobile/tablet layout (keep current behavior) */}
           <div className="lg:hidden">
             {heroCategory && (
               <div className="mb-4">
@@ -131,7 +123,6 @@ export default function HomePage() {
             )}
           </div>
 
-          {/* Desktop layout: 3 cards side-by-side */}
           {desktopCategories.length >= 3 && (
             <div className="hidden lg:grid grid-cols-3 gap-6">
               {desktopCategories.slice(0, 3).map((cat, i) => (
@@ -142,73 +133,68 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* Flash Sales */}
-      <section className="section-padding max-w-7xl mx-auto bg-brand-black text-white rounded-card">
+      {/* Today's Deals (formerly Flash Sales) */}
+      <section className="section-padding max-w-7xl mx-auto bg-brand-gradient text-white rounded-card shadow-orange">
         <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
           <div>
-            <h2 className="text-xl font-display font-semibold">Flash Sales</h2>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/80 mb-1">Limited Time</p>
+            <h2 className="text-xl md:text-2xl font-display font-semibold">Today&apos;s Deals</h2>
             {countdown ? (
-              <p className="text-sm text-white/70 mt-1">
+              <p className="text-sm text-white/80 mt-1">
                 {countdown.mode === 'starts' ? 'Starts in' : 'Ends in'}{' '}
                 {countdown.days}d : {String(countdown.hours).padStart(2, '0')}h :{' '}
                 {String(countdown.minutes).padStart(2, '0')}m :{' '}
                 {String(countdown.seconds).padStart(2, '0')}s
               </p>
             ) : (
-              <p className="text-sm text-white/60 mt-1">No sales at the moment</p>
+              <p className="text-sm text-white/75 mt-1">Check back soon for hot meal deals</p>
             )}
           </div>
-          <Link to="/shop?filter=flash-sales" className="btn-outline text-xs border-white/30 text-white hover:border-brand-pink">
-            View All →
+          <Link to="/shop?filter=flash-sales" className="rounded-full border-2 border-white bg-white/10 px-5 py-2 text-xs font-semibold text-white backdrop-blur-sm transition hover:bg-white hover:text-brand-pink">
+            View All Deals →
           </Link>
         </div>
 
         {flashSales.length > 0 ? (
-          <PaginatedProductGrid products={flashSales} itemLabel="flash sales" dark />
+          <PaginatedProductGrid products={flashSales} itemLabel="deals" dark />
         ) : (
-          <div className="text-sm text-white/60 py-6">No sales at the moment</div>
+          <div className="text-sm text-white/70 py-6">No deals running right now — explore our full menu.</div>
         )}
       </section>
 
-      {/* Featured */}
       {featured.length > 0 && (
         <section className="section-padding max-w-7xl mx-auto">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-display font-semibold">Featured Items</h2>
+            <h2 className="text-xl font-display font-semibold">Chef&apos;s Picks</h2>
             <Link to="/shop?filter=featured" className="btn-ghost text-xs">
-              All Products →
+              View Full Menu →
             </Link>
           </div>
-          <PaginatedProductGrid products={featured} itemLabel="featured items" />
+          <PaginatedProductGrid products={featured} itemLabel="chef picks" />
         </section>
       )}
 
-      {/* New Arrivals */}
       {newArrivals.length > 0 && (
-        <section className="section-padding max-w-7xl mx-auto bg-brand-gray-50">
+        <section className="section-padding max-w-7xl mx-auto bg-brand-orange-pale/60 dark:bg-dark-elevated">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-display font-semibold">New Arrivals</h2>
+            <h2 className="text-xl font-display font-semibold">Tasty Combos</h2>
             <Link to="/shop?filter=new-arrivals" className="btn-ghost text-xs">View All →</Link>
           </div>
-          <PaginatedProductGrid products={newArrivals} itemLabel="new arrivals" />
+          <PaginatedProductGrid products={newArrivals} itemLabel="tasty combos" />
         </section>
       )}
 
-      {/* Best Sellers */}
       {bestsellers.length > 0 && (
         <section className="section-padding max-w-7xl mx-auto">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-display font-semibold">Best Sellers</h2>
+            <h2 className="text-xl font-display font-semibold">Popular Meals</h2>
             <Link to="/shop?filter=bestsellers" className="btn-ghost text-xs">View All →</Link>
           </div>
-          <PaginatedProductGrid products={bestsellers} itemLabel="best sellers" />
+          <PaginatedProductGrid products={bestsellers} itemLabel="popular meals" />
         </section>
       )}
 
-      {/* Why Choose — zoom parallax */}
       <WhyChooseSection />
-
-      {/* Testimonials — community marquee */}
       <CommunityTestimonialsSection />
     </>
   );

@@ -13,8 +13,12 @@ from .agreement_serializers import TermsAgreementSerializer
 
 
 class CheckoutView(APIView):
-    authentication_classes = []
+    authentication_classes = []  # set below to allow optional JWT
     permission_classes = []
+
+    def get_authenticators(self):
+        from rest_framework_simplejwt.authentication import JWTAuthentication
+        return [JWTAuthentication()]
 
     def post(self, request):
         serializer = CheckoutSerializer(data=request.data, context={'request': request})
@@ -88,7 +92,7 @@ class AdminOrderDetailView(generics.RetrieveUpdateAPIView):
             if order.status == 'delivered':
                 order.delivered_at = timezone.now()
                 order.save(update_fields=['delivered_at'])
-            elif order.status == 'shipped':
+            elif order.status in ('shipped', 'out_for_delivery'):
                 order.shipped_at = timezone.now()
                 order.save(update_fields=['shipped_at'])
             elif order.status == 'cancelled':
@@ -116,7 +120,7 @@ class AdminOrderStatusUpdateView(APIView):
             if order.status == 'delivered':
                 order.delivered_at = timezone.now()
                 order.save(update_fields=['delivered_at'])
-            elif order.status == 'shipped':
+            elif order.status in ('shipped', 'out_for_delivery'):
                 order.shipped_at = timezone.now()
                 order.save(update_fields=['shipped_at'])
             elif order.status == 'cancelled':

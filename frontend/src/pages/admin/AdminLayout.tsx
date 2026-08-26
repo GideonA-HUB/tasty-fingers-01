@@ -22,11 +22,13 @@ import {
   ExternalLink,
   ShieldCheck,
   CalendarDays,
+  Users,
 } from 'lucide-react';
 
 const navItems = [
   { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, path: '/dashboard' },
   { id: 'orders', label: 'Orders', icon: ShoppingCart, path: '/dashboard/orders' },
+  { id: 'customers', label: 'Customers', icon: Users, path: '/dashboard/customers' },
   { id: 'legal-agreements', label: 'Legal Agreements', icon: ShieldCheck, path: '/dashboard/legal-agreements' },
   { id: 'products', label: 'Meals', icon: Package, path: '/dashboard/products' },
   { id: 'categories', label: 'Categories', icon: FolderOpen, path: '/dashboard/categories' },

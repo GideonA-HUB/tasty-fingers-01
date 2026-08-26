@@ -39,7 +39,7 @@ class CategoryDetailView(generics.RetrieveAPIView):
 class ProductListView(generics.ListAPIView):
     serializer_class = ProductListSerializer
     filterset_class = ProductFilter
-    search_fields = ['name', 'description', 'category__name', 'color', 'lace_type']
+    search_fields = ['name', 'description', 'short_description', 'category__name', 'density']
     ordering_fields = ['price', 'created_at', 'name']
     ordering = ['-created_at']
 
@@ -122,9 +122,9 @@ class ProductSearchView(APIView):
         products = Product.objects.filter(
             Q(name__icontains=query) |
             Q(description__icontains=query) |
+            Q(short_description__icontains=query) |
             Q(category__name__icontains=query) |
-            Q(color__icontains=query) |
-            Q(lace_type__icontains=query),
+            Q(density__icontains=query),
             is_active=True,
             is_archived=False,
         ).select_related('category').prefetch_related('images', 'reviews')[:20]

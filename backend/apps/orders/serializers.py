@@ -140,8 +140,15 @@ class CheckoutSerializer(serializers.Serializer):
 
         validated_data.pop('agreed_to_terms', None)
 
+        request = self.context.get('request')
+        user = None
+        if request and getattr(request, 'user', None) and request.user.is_authenticated:
+            if not request.user.is_staff:
+                user = request.user
+
         order = Order.objects.create(
             **validated_data,
+            user=user,
             subtotal=subtotal,
             delivery_fee=delivery_fee,
             total=total,
@@ -159,6 +166,7 @@ class CheckoutSerializer(serializers.Serializer):
 class OrderSerializer(serializers.ModelSerializer):
     items = OrderItemSerializer(many=True, read_only=True)
     payment_method_display = serializers.ReadOnlyField()
+    status_display = serializers.CharField(source='get_status_display', read_only=True)
 
     class Meta:
         model = Order
@@ -167,7 +175,7 @@ class OrderSerializer(serializers.ModelSerializer):
             'address', 'city', 'state', 'country',
             'delivery_type', 'international_region',
             'order_notes',
-            'subtotal', 'delivery_fee', 'total', 'status', 'payment_method',
+            'subtotal', 'delivery_fee', 'total', 'status', 'status_display', 'payment_method',
             'payment_method_display',
             'payment_reference', 'is_paid', 'paid_at', 'agreed_to_terms', 'terms_agreed_at',
             'items', 'created_at',

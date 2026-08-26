@@ -15,6 +15,10 @@ import ContactPage from '@/pages/ContactPage';
 import CategoriesPage from '@/pages/CategoriesPage';
 import PolicyPage from '@/pages/PolicyPage';
 import BookingsPage from '@/pages/BookingsPage';
+import LoginPage from '@/pages/LoginPage';
+import RegisterPage from '@/pages/RegisterPage';
+import AccountPage from '@/pages/AccountPage';
+import TrackOrderPage from '@/pages/TrackOrderPage';
 
 const AdminLogin = lazy(() => import('@/pages/admin/AdminLogin'));
 const AdminDashboard = lazy(() => import('@/pages/admin/AdminDashboard'));
@@ -32,6 +36,7 @@ const AdminActivityLogs = lazy(() => import('@/pages/admin/AdminActivityLogs'));
 const AdminNotifications = lazy(() => import('@/pages/admin/AdminNotifications'));
 const AdminLegalAgreements = lazy(() => import('@/pages/admin/AdminLegalAgreements'));
 const AdminBookings = lazy(() => import('@/pages/admin/AdminBookings'));
+const AdminCustomers = lazy(() => import('@/pages/admin/AdminCustomers'));
 
 function ScrollToTopOnRouteChange() {
   const { pathname } = useLocation();
@@ -66,6 +71,10 @@ export default function App() {
           <Route path="about" element={<AboutPage />} />
           <Route path="contact" element={<ContactPage />} />
           <Route path="bookings" element={<BookingsPage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="register" element={<RegisterPage />} />
+          <Route path="account" element={<AccountPage />} />
+          <Route path="track-order" element={<TrackOrderPage />} />
           <Route path="privacy" element={<PolicyPage />} />
           <Route path="terms" element={<PolicyPage />} />
           <Route path="refund" element={<PolicyPage />} />
@@ -75,6 +84,7 @@ export default function App() {
         <Route element={<AdminLayout />}>
           <Route path="/dashboard" element={<AdminDashboard />} />
           <Route path="/dashboard/orders" element={<AdminOrders />} />
+          <Route path="/dashboard/customers" element={<AdminCustomers />} />
           <Route path="/dashboard/legal-agreements" element={<AdminLegalAgreements />} />
           <Route path="/dashboard/products" element={<AdminProducts />} />
           <Route path="/dashboard/categories" element={<AdminCategories />} />

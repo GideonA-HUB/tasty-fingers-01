@@ -16,17 +16,28 @@ class Order(models.Model):
     ]
 
     STATUS_CHOICES = [
-        ('pending', 'Pending'),
+        ('pending', 'Pending Payment'),
         ('paid', 'Paid'),
-        ('processing', 'Processing'),
         ('confirmed', 'Confirmed'),
-        ('shipped', 'Shipped'),
+        ('preparing', 'Preparing'),
+        ('ready', 'Ready for Pickup'),
+        ('out_for_delivery', 'Out for Delivery'),
+        ('processing', 'Preparing'),  # legacy
+        ('shipped', 'Out for Delivery'),  # legacy
         ('delivered', 'Delivered'),
         ('cancelled', 'Cancelled'),
         ('refunded', 'Refunded'),
     ]
 
     order_number = models.CharField(max_length=20, unique=True, editable=False)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='orders',
+        help_text='Linked customer account (optional for guest checkout)',
+    )
     full_name = models.CharField(max_length=200)
     email = models.EmailField()
     phone = models.CharField(max_length=20)

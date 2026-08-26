@@ -16,7 +16,7 @@ import ProductShare from '@/components/ProductShare';
 import { productsApi } from '@/api';
 import { useCartStore } from '@/store/cartStore';
 import { useCurrencyStore } from '@/store/currencyStore';
-import { formatGrams, formatPrice, getLaceTypeLabel, getLengthLabel } from '@/utils/format';
+import { formatGrams, formatPrice } from '@/utils/format';
 
 export default function ProductPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -172,24 +172,9 @@ export default function ProductPage() {
             </div>
 
             <div className="flex flex-wrap gap-3 text-sm">
-              {product.length && (
-                <span className="px-3 py-1.5 rounded-full bg-brand-gray-50 text-brand-accent/70">
-                  Length: {getLengthLabel(product.length)}
-                </span>
-              )}
-              {product.lace_type && (
-                <span className="px-3 py-1.5 rounded-full bg-brand-gray-50 text-brand-accent/70">
-                  {getLaceTypeLabel(product.lace_type)}
-                </span>
-              )}
               {product.density && (
                 <span className="px-3 py-1.5 rounded-full bg-brand-gray-50 text-brand-accent/70">
-                  Grams: {formatGrams(product.density)}
-                </span>
-              )}
-              {product.color && (
-                <span className="px-3 py-1.5 rounded-full bg-brand-gray-50 text-brand-accent/70">
-                  Color: {product.color}
+                  Portion: {formatGrams(product.density)}
                 </span>
               )}
             </div>

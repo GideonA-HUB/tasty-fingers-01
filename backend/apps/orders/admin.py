@@ -8,6 +8,7 @@ class OrderItemInline(admin.TabularInline):
     extra = 0
     readonly_fields = ['product_name', 'price', 'quantity', 'subtotal']
     can_delete = False
+    exclude = ['length', 'lace_type', 'color']
 
 
 @admin.register(Order)
@@ -27,10 +28,16 @@ class OrderAdmin(admin.ModelAdmin):
         'payment_method_label', 'payment_reference', 'paid_at',
         'created_at', 'updated_at',
     ]
+    raw_id_fields = ['user']
     inlines = [OrderItemInline]
     fieldsets = (
         ('Order Info', {'fields': ('order_number', 'status', 'is_paid', 'paid_at')}),
-        ('Customer', {'fields': ('full_name', 'email', 'phone', 'agreed_to_terms', 'terms_agreed_at')}),
+        ('Customer', {
+            'fields': (
+                'user', 'full_name', 'email', 'phone',
+                'agreed_to_terms', 'terms_agreed_at',
+            ),
+        }),
         ('Delivery', {
             'fields': (
                 'delivery_type', 'international_region',

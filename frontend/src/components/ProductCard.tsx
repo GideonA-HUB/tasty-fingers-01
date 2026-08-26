@@ -68,8 +68,8 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
           />
         </div>
         {product.is_flash_sale && (
-          <span className="absolute bottom-2 left-2 z-[1] rounded-full bg-brand-black px-2 py-0.5 text-[10px] font-semibold text-white">
-            Flash Sale
+          <span className="absolute bottom-2 left-2 z-[1] rounded-full bg-brand-pink px-2 py-0.5 text-[10px] font-semibold text-white shadow-sm">
+            Deal
           </span>
         )}
       </div>

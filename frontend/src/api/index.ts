@@ -102,10 +102,53 @@ export const siteApi = {
 export const ordersApi = {
   checkout: (data: CheckoutFormData) => apiClient.post<Order>('/orders/checkout/', data),
   get: (orderNumber: string) => apiClient.get<Order>(`/orders/${orderNumber}/`),
+  track: (order_number: string, email: string) =>
+    apiClient.post<Order>('/accounts/track-order/', { order_number, email }),
   adminList: (params?: Record<string, string>) =>
     apiClient.get<PaginatedResponse<Order>>('/orders/admin/list/', { params }),
   adminUpdate: (orderNumber: string, data: { status: string }) =>
     apiClient.patch(`/orders/admin/${orderNumber}/`, data),
+};
+
+export interface CustomerProfile {
+  customer_id: string;
+  email: string;
+  full_name: string;
+  first_name?: string;
+  last_name?: string;
+  phone: string;
+  avatar: string;
+  avatar_choices: { value: string; label: string }[];
+  address: string;
+  city: string;
+  state: string;
+  created_at: string;
+  order_count?: number;
+  is_active?: boolean;
+}
+
+export const customerAuthApi = {
+  register: (data: {
+    full_name: string;
+    email: string;
+    phone?: string;
+    password: string;
+    password_confirm: string;
+  }) =>
+    apiClient.post<{ access: string; refresh: string; user: CustomerProfile }>(
+      '/accounts/register/',
+      data
+    ),
+  login: (email: string, password: string) =>
+    apiClient.post<{ access: string; refresh: string; user: CustomerProfile }>(
+      '/accounts/customer/login/',
+      { email, password }
+    ),
+  profile: () => apiClient.get<CustomerProfile>('/accounts/customer/profile/'),
+  updateProfile: (data: Partial<CustomerProfile>) =>
+    apiClient.patch<CustomerProfile>('/accounts/customer/profile/', data),
+  orders: () => apiClient.get<Order[]>('/accounts/customer/orders/'),
+  adminCustomers: () => apiClient.get<CustomerProfile[]>('/accounts/admin/customers/'),
 };
 
 export const paymentsApi = {

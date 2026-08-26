@@ -68,16 +68,17 @@ const DEFAULT_TAGLINE =
   'Authentic Nigerian meals for delivery and pickup — jollof, soups, grills, and more.';
 
 const shopLinks = [
-  { title: 'All Products', href: '/shop' },
+  { title: 'View Full Menu', href: '/shop' },
   { title: 'Categories', href: '/categories' },
-  { title: 'New Arrivals', href: '/shop?filter=new-arrivals' },
-  { title: 'Best Sellers', href: '/shop?filter=bestsellers' },
-  { title: 'Flash Sales', href: '/shop?filter=flash-sales' },
+  { title: "Today's Deals", href: '/shop?filter=flash-sales' },
+  { title: 'Tasty Combos', href: '/shop?filter=new-arrivals' },
+  { title: 'Bookings & Training', href: '/bookings' },
 ];
 
 const companyLinks = [
   { title: 'About', href: '/about' },
   { title: 'Contact', href: '/contact' },
+  { title: 'Track Order', href: '/track-order' },
 ];
 
 const legalLinks = [

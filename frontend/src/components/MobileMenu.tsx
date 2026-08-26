@@ -14,9 +14,12 @@ const menuLinks = [
   { to: '/', label: 'Home' },
   { to: '/shop', label: 'View Menu' },
   { to: '/categories', label: 'Categories' },
-  { to: '/shop?filter=flash-sales', label: 'Tasty Specials' },
+  { to: '/shop?filter=flash-sales', label: "Today's Deals" },
   { to: '/shop?filter=new-arrivals', label: 'Tasty Combos' },
   { to: '/bookings', label: 'Bookings & Training' },
+  { to: '/track-order', label: 'Track Order' },
+  { to: '/account', label: 'My Account' },
+  { to: '/login', label: 'Sign In' },
   { to: '/about', label: 'About' },
   { to: '/contact', label: 'Contact' },
 ];

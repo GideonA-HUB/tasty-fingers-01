@@ -76,19 +76,19 @@ class Product(models.Model):
     color = models.CharField(max_length=100, blank=True)
     stock = models.PositiveIntegerField(default=0)
     sku = models.CharField(max_length=50, blank=True, unique=True, null=True)
-    is_featured = models.BooleanField(default=False)
-    is_bestseller = models.BooleanField(default=False)
-    is_new_arrival = models.BooleanField(default=False)
-    is_flash_sale = models.BooleanField(default=False)
+    is_featured = models.BooleanField('Chef\'s Pick', default=False)
+    is_bestseller = models.BooleanField('Popular Meal', default=False)
+    is_new_arrival = models.BooleanField('Tasty Combo', default=False)
+    is_flash_sale = models.BooleanField("Today's Deal", default=False)
     flash_sale_start_at = models.DateTimeField(
         blank=True,
         null=True,
-        help_text='When this meal’s flash sale becomes active on the storefront.',
+        help_text='When this deal becomes active on the storefront.',
     )
     flash_sale_end_at = models.DateTimeField(
         blank=True,
         null=True,
-        help_text='When this meal’s flash sale ends on the storefront.',
+        help_text='When this deal ends on the storefront.',
     )
     is_active = models.BooleanField(default=True)
     is_archived = models.BooleanField(default=False)

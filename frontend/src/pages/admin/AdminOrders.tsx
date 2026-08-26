@@ -47,13 +47,42 @@ interface Order {
 const STATUS_COLORS: Record<string, string> = {
   pending: 'bg-amber-100 text-amber-800',
   paid: 'bg-emerald-100 text-emerald-800',
-  processing: 'bg-blue-100 text-blue-800',
   confirmed: 'bg-violet-100 text-violet-800',
+  preparing: 'bg-blue-100 text-blue-800',
+  processing: 'bg-blue-100 text-blue-800',
+  ready: 'bg-indigo-100 text-indigo-800',
+  out_for_delivery: 'bg-cyan-100 text-cyan-800',
   shipped: 'bg-cyan-100 text-cyan-800',
   delivered: 'bg-green-100 text-green-800',
   cancelled: 'bg-red-100 text-red-800',
   refunded: 'bg-slate-100 text-slate-800',
 };
+
+const STATUS_LABELS: Record<string, string> = {
+  pending: 'Pending Payment',
+  paid: 'Paid',
+  confirmed: 'Confirmed',
+  preparing: 'Preparing',
+  processing: 'Preparing',
+  ready: 'Ready for Pickup',
+  out_for_delivery: 'Out for Delivery',
+  shipped: 'Out for Delivery',
+  delivered: 'Delivered',
+  cancelled: 'Cancelled',
+  refunded: 'Refunded',
+};
+
+const ADMIN_STATUSES = [
+  'pending',
+  'paid',
+  'confirmed',
+  'preparing',
+  'ready',
+  'out_for_delivery',
+  'delivered',
+  'cancelled',
+  'refunded',
+];
 
 export default function AdminOrders() {
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
@@ -97,12 +126,15 @@ export default function AdminOrders() {
             className="rounded-xl border border-slate-200 px-4 py-2.5 text-sm outline-none focus:border-brand-pink"
           >
             <option value="all">All Statuses</option>
-            <option value="pending">Pending</option>
+            <option value="pending">Pending Payment</option>
             <option value="paid">Paid</option>
-            <option value="processing">Processing</option>
-            <option value="shipped">Shipped</option>
+            <option value="confirmed">Confirmed</option>
+            <option value="preparing">Preparing</option>
+            <option value="ready">Ready for Pickup</option>
+            <option value="out_for_delivery">Out for Delivery</option>
             <option value="delivered">Delivered</option>
             <option value="cancelled">Cancelled</option>
+            <option value="refunded">Refunded</option>
           </select>
           <select
             value={deliveryFilter}
@@ -188,7 +220,7 @@ export default function AdminOrders() {
                       <span
                         className={`rounded-full px-2.5 py-1 text-xs font-medium capitalize ${STATUS_COLORS[order.status] || 'bg-slate-100 text-slate-700'}`}
                       >
-                        {order.status}
+                        {STATUS_LABELS[order.status] || order.status}
                       </span>
                     </td>
                     <td className="px-5 py-4 text-sm text-slate-500">
@@ -320,13 +352,6 @@ export default function AdminOrders() {
                       <p className="mt-1 text-sm text-slate-500">
                         Qty {item.quantity} × {formatNaira(item.price)} = {formatNaira(item.subtotal)}
                       </p>
-                      {(item.length || item.lace_type || item.color) && (
-                        <p className="mt-1 text-xs text-slate-400">
-                          {[item.length && `Length: ${item.length}`, item.lace_type && `Lace: ${item.lace_type}`, item.color && `Color: ${item.color}`]
-                            .filter(Boolean)
-                            .join(' · ')}
-                        </p>
-                      )}
                     </div>
                   ))}
                 </div>
@@ -335,18 +360,18 @@ export default function AdminOrders() {
               <section>
                 <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-brand-pink">Update Status</h3>
                 <div className="flex flex-wrap gap-2">
-                  {['pending', 'paid', 'processing', 'shipped', 'delivered', 'cancelled'].map((status) => (
+                  {ADMIN_STATUSES.map((status) => (
                     <button
                       key={status}
                       type="button"
                       onClick={() => updateOrderStatus(selectedOrder.id, status)}
-                      className={`rounded-lg px-3 py-1.5 text-xs font-medium capitalize ${
+                      className={`rounded-lg px-3 py-1.5 text-xs font-medium ${
                         selectedOrder.status === status
                           ? STATUS_COLORS[status]
                           : 'border border-slate-200 text-slate-600 hover:border-brand-pink/30'
                       }`}
                     >
-                      {status}
+                      {STATUS_LABELS[status] || status}
                     </button>
                   ))}
                 </div>

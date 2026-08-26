@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCartStore } from '@/store/cartStore';
+import { useCustomerStore } from '@/store/customerStore';
 import BrandLogo from './BrandLogo';
 import MobileMenu from './MobileMenu';
 import ThemeToggle from './ThemeToggle';
@@ -16,6 +17,7 @@ export default function Header({ whatsappNumber }: HeaderProps) {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const { openCart, getItemCount } = useCartStore();
+  const isCustomerAuthed = useCustomerStore((s) => s.isAuthenticated);
   const navigate = useNavigate();
   const itemCount = getItemCount();
 
@@ -81,6 +83,20 @@ export default function Header({ whatsappNumber }: HeaderProps) {
             </Link>
 
             <div className="flex items-center gap-0.5">
+              <Link
+                to={isCustomerAuthed ? '/account' : '/login'}
+                className={iconBtn}
+                aria-label={isCustomerAuthed ? 'My account' : 'Sign in'}
+              >
+                <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.75}
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                  />
+                </svg>
+              </Link>
               <button onClick={() => setSearchOpen(!searchOpen)} className={iconBtn} aria-label="Search">
                 <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />

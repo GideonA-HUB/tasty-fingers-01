@@ -9,8 +9,7 @@ class AccountsConfig(AppConfig):
     name = 'apps.accounts'
 
     def ready(self):
-        from django.db.models.signals import post_migrate
-
+        import apps.accounts.models  # noqa: F401 — register profile signals
         post_migrate.connect(create_admin_user, sender=self)
 
 

@@ -8,6 +8,7 @@ import SEO from '@/components/SEO';
 import { ordersApi, paymentsApi } from '@/api';
 import { useCartStore } from '@/store/cartStore';
 import { useCurrencyStore } from '@/store/currencyStore';
+import { useCustomerStore } from '@/store/customerStore';
 import { saveCheckoutDraft, loadCheckoutDraft, savePendingOrder } from '@/lib/checkoutSession';
 import { formatPrice } from '@/utils/format';
 
@@ -95,6 +96,23 @@ export default function CheckoutPage() {
         agreed_to_terms: draft.agreed_to_terms ?? false,
         is_international_delivery: draft.is_international_delivery ?? false,
         international_region: draft.international_region ?? '',
+      });
+      return;
+    }
+    const user = useCustomerStore.getState().user;
+    if (user) {
+      reset({
+        full_name: user.full_name || '',
+        email: user.email || '',
+        phone: user.phone || '',
+        address: user.address || '',
+        city: user.city || '',
+        state: user.state || '',
+        country: 'Nigeria',
+        payment_method: 'paystack',
+        agreed_to_terms: false,
+        is_international_delivery: false,
+        international_region: '',
       });
     }
   }, [reset]);

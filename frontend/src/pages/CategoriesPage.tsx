@@ -65,7 +65,7 @@ export default function CategoriesPage() {
             to="/shop"
             className="inline-block rounded-full border border-brand-pink px-8 py-3 text-sm font-semibold text-brand-pink transition-all hover:bg-brand-pink hover:text-white"
           >
-            View All Products →
+            View Full Menu →
           </Link>
         </div>
       </div>

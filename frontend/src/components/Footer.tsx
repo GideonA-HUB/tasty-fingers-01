@@ -38,7 +38,6 @@ export default function Footer({
   return (
     <footer className="bg-brand-accent text-white">
       <div className="section-padding max-w-7xl mx-auto">
-        {/* Newsletter */}
         <div className="text-center mb-10 pb-10 border-b border-white/10">
           <h3 className="text-xl font-display font-semibold mb-2">Join Our Food Circle</h3>
           <p className="text-white/60 text-sm mb-6">Exclusive access to new menu items, promotions & offers</p>
@@ -57,7 +56,7 @@ export default function Footer({
               <button
                 type="submit"
                 disabled={loading}
-                className="whitespace-nowrap rounded-full bg-white px-6 py-3 text-sm font-medium text-brand-black transition hover:bg-brand-gray-100 disabled:cursor-not-allowed disabled:opacity-50"
+                className="whitespace-nowrap rounded-full bg-white px-6 py-3 text-sm font-medium text-brand-pink transition hover:bg-brand-orange-pale disabled:cursor-not-allowed disabled:opacity-50"
               >
                 Subscribe
               </button>
@@ -73,11 +72,12 @@ export default function Footer({
             </p>
           </div>
           <div>
-            <h4 className="font-semibold mb-3 text-sm">Shop</h4>
+            <h4 className="font-semibold mb-3 text-sm">Menu</h4>
             <ul className="space-y-2 text-sm text-white/60">
-              <li><Link to="/shop" className="transition-colors hover:text-white">All Products</Link></li>
-              <li><Link to="/shop?filter=new-arrivals" className="transition-colors hover:text-white">New Arrivals</Link></li>
-              <li><Link to="/shop?filter=bestsellers" className="transition-colors hover:text-white">Best Sellers</Link></li>
+              <li><Link to="/shop" className="transition-colors hover:text-white">View Full Menu</Link></li>
+              <li><Link to="/shop?filter=flash-sales" className="transition-colors hover:text-white">Today&apos;s Deals</Link></li>
+              <li><Link to="/shop?filter=new-arrivals" className="transition-colors hover:text-white">Tasty Combos</Link></li>
+              <li><Link to="/bookings" className="transition-colors hover:text-white">Bookings & Training</Link></li>
             </ul>
           </div>
           <div>
@@ -85,6 +85,7 @@ export default function Footer({
             <ul className="space-y-2 text-sm text-white/60">
               <li><Link to="/about" className="transition-colors hover:text-white">About</Link></li>
               <li><Link to="/contact" className="transition-colors hover:text-white">Contact</Link></li>
+              <li><Link to="/track-order" className="transition-colors hover:text-white">Track Order</Link></li>
             </ul>
           </div>
           <div>
